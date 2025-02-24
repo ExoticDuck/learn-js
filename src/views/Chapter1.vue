@@ -1,3 +1,10 @@
+<template>
+  <div class="about">
+    <h1>Chapter 1</h1>
+  </div>
+</template>
+
+<script lang="js">
 // alert("Я JavaScript!");
 
 // *Работа с переменными
@@ -502,16 +509,110 @@ const number = +prompt("Введите число между 0 и 3", "");
 //   alert('Вы ввели число 2, а может и 3');
 // }
 
-switch (number) {
-  case number === 0:
-    console.log("Вы ввели число 0");
-    break;
-  case number === 1:
-    console.log("Вы ввели число 1");
-    break;
-  case number === 2 || number === 3:
-    console.log("Вы ввели число 2, а может и 3");
-    break;
-  default:
-    break;
+// switch (number) {
+//   case number === 0:
+//     console.log("Вы ввели число 0");
+//     break;
+//   case number === 1:
+//     console.log("Вы ввели число 1");
+//     break;
+//   case number === 2 || number === 3:
+//     console.log("Вы ввели число 2, а может и 3");
+//     break;
+//   default:
+//     break;
+// }
+
+//* Перепишите функцию, используя оператор '?' или '||'
+// важность: 4
+// Следующая функция возвращает true, если параметр age больше 18.
+
+// В ином случае она задаёт вопрос confirm и возвращает его результат.
+
+// function checkAge(age) {
+//   if (age > 18) {
+//     return true;
+//   } else {
+//     return confirm('Родители разрешили?');
+//   }
+// }
+function checkAge(age) {
+  return age > 18 || confirm("Родители разрешили?");
 }
+
+console.log(checkAge(22));
+
+//* Функция min(a, b)
+// важность: 1
+// Напишите функцию min(a,b), которая возвращает меньшее из чисел a и b.
+
+// Пример вызовов:
+
+// min(2, 5) == 2
+// min(3, -1) == -1
+// min(1, 1) == 1
+
+function min(a, b) {
+  return a < b ? a : b;
+}
+
+//* Функция pow(x,n)
+// важность: 4
+// Напишите функцию pow(x,n), которая возводит x в степень n и возвращает результат.
+
+// pow(3, 2) = 3 * 3 = 9
+// pow(3, 3) = 3 * 3 * 3 = 27
+// pow(1, 100) = 1 * 1 * ...* 1 = 1
+
+function pow(a, b) {
+  let res = a;
+  let base = b;
+  while (base > 1) {
+    res *= a;
+    base--;
+  }
+  return res;
+}
+
+console.log(pow(3, 4));
+
+//* Задачи
+// Перепишите с использованием функции-стрелки
+// Замените код Function Expression стрелочной функцией:
+
+// function ask(question, yes, no) {
+//   if (confirm(question)) yes()
+//   else no();
+// }
+
+// ask(
+//   "Вы согласны?",
+//   function() { alert("Вы согласились."); },
+//   function() { alert("Вы отменили выполнение."); }
+// );
+
+const ask = (question, yes, no) => {
+  if (confirm(question)) yes();
+  else no();
+};
+
+ask(
+  "Вы согласны?",
+  () => {
+    alert("Вы согласились.");
+  },
+  () => {
+    alert("Вы отменили выполнение.");
+  }
+);
+</script>
+
+<style>
+@media (min-width: 1024px) {
+  .about {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+  }
+}
+</style>
