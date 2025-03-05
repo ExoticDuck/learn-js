@@ -4,7 +4,7 @@
   </div>
 </template>
 
-<script lang="js">
+<script lang="ts" setup>
 // Можно ли добавить свойство строке?
 // важность: 5
 // Взгляните на следующий код:
@@ -23,8 +23,8 @@ let str = "Привет";
 
 // P.S. Есть «подводный камень» при работе с типами.
 
-const a = +prompt('Введите первое число') //prompt вернет строку, поэтому преобразуем к числу через +
-const b = +prompt('Введите второе число')
+const a = +prompt("Введите первое число"); //prompt вернет строку, поэтому преобразуем к числу через +
+const b = +prompt("Введите второе число");
 
 console.log(a + b);
 
@@ -35,10 +35,13 @@ console.log(a + b);
 // ucFirst("вася") == "Вася";
 
 function ucFirst(str) {
-  return str.split('').map((key, i) => i === 0 ? key.toUpperCase() : key).join('');
+  return str
+    .split("")
+    .map((key, i) => (i === 0 ? key.toUpperCase() : key))
+    .join("");
 }
 
-console.log(ucFirst('вася'));
+console.log(ucFirst("вася"));
 
 // Проверка на спам
 // важность: 5
@@ -51,14 +54,14 @@ console.log(ucFirst('вася'));
 // checkSpam("innocent rabbit") == false
 
 function checkSpam(str) {
-  const toLower = str.toLowerCase()
-  if (toLower.includes('xxx') || toLower.includes('viagra')) {
-    return true
+  const toLower = str.toLowerCase();
+  if (toLower.includes("xxx") || toLower.includes("viagra")) {
+    return true;
   }
-  return false
+  return false;
 }
 
-console.log(checkSpam('buy ViAgRA now'));
+console.log(checkSpam("buy ViAgRA now"));
 
 // Усечение строки
 // важность: 5
@@ -69,12 +72,12 @@ console.log(checkSpam('buy ViAgRA now'));
 // Например:
 
 function truncate(str, maxLength) {
-  return str.length > maxLength ? str.substring(0, maxLength - 1) + '…' : str
+  return str.length > maxLength ? str.substring(0, maxLength - 1) + "…" : str;
 }
 
-console.log(truncate("Вот, что мне хотелось бы сказать на эту тему:", 20))
+console.log(truncate("Вот, что мне хотелось бы сказать на эту тему:", 20));
 
-console.log(truncate("Всем привет!", 20))
+console.log(truncate("Всем привет!", 20));
 
 // Выделить число
 // важность: 4
@@ -85,10 +88,10 @@ console.log(truncate("Всем привет!", 20))
 // Например:
 
 function extractCurrencyValue(currency) {
-  return +currency.substring(1)
+  return +currency.substring(1);
 }
 
-console.log( extractCurrencyValue('$120') === 120); // true
+console.log(extractCurrencyValue("$120") === 120); // true
 
 //Arrays
 
@@ -103,7 +106,7 @@ let shoppingCart = fruits;
 shoppingCart.push("Банан");
 
 // что в fruits?
-alert( fruits.length ); // Банан, Яблоки, Груша, Апельсин (обе переменные ссылаются на один массив)
+alert(fruits.length); // Банан, Яблоки, Груша, Апельсин (обе переменные ссылаются на один массив)
 
 // Операции с массивами
 // важность: 5
@@ -122,17 +125,17 @@ alert( fruits.length ); // Банан, Яблоки, Груша, Апельси�
 // Классика, Рок-н-ролл
 // Рэп, Регги, Классика, Рок-н-ролл
 
-const styles = ["Джаз", "Блюз"]
-styles.push('Рок-н-ролл')
+const styles = ["Джаз", "Блюз"];
+styles.push("Рок-н-ролл");
 console.log(styles);
 
-styles[Math.ceil(styles.length / 2 - 1)] = 'Классика'
+styles[Math.ceil(styles.length / 2 - 1)] = "Классика";
 console.log(styles);
 
 console.log(styles.shift());
 console.log(styles);
 
-styles.unshift('Рэп', 'Регги')
+styles.unshift("Рэп", "Регги");
 console.log(styles);
 
 // Вызов в контексте массива
@@ -141,11 +144,11 @@ console.log(styles);
 
 let arr = ["a", "b"];
 
-arr.push(function() {
-  alert( this );
-});
+// arr.push(function () {
+//   alert(this);
+// });
 
-arr[2](); // вернет элементы массива arr, т.к в качестве this выступает массив.
+// arr[2](); // вернет элементы массива arr, т.к в качестве this выступает массив.
 
 // Сумма введённых чисел
 // важность: 4
@@ -157,10 +160,10 @@ arr[2](); // вернет элементы массива arr, т.к в каче
 // P.S. Ноль 0 – считается числом, не останавливайте ввод значений при вводе «0».
 
 function sumInput() {
-  const arr = []
-  while(true) {
-    const num = prompt('Введите число', '0')
-    if(num === null || num === '' || isNaN(+num)) {
+  const arr = [];
+  while (true) {
+    const num = prompt("Введите число", "0");
+    if (num === null || num === "" || isNaN(+num)) {
       break;
     }
     arr.push(+num);
@@ -168,7 +171,7 @@ function sumInput() {
   return arr.reduce((acc, el) => acc + el, 0);
 }
 
-console.log(sumInput())
+console.log(sumInput());
 
 // Подмассив наибольшей суммы
 // важность: 2
@@ -190,17 +193,17 @@ console.log(sumInput())
 function getMaxSubSum(arr) {
   let result = 0;
   let sum = 0;
-for(const item of arr) {
-  sum += item;
-  result = Math.max(result, sum)
-  if(sum < 0) {
-    sum = 0
+  for (const item of arr) {
+    sum += item;
+    result = Math.max(result, sum);
+    if (sum < 0) {
+      sum = 0;
+    }
   }
-}
-return result;
+  return result;
 }
 
-console.log( getMaxSubSum([-1, 2, 3, -9]));
+console.log(getMaxSubSum([-1, 2, 3, -9]));
 
 // Переведите текст вида border-left-width в borderLeftWidth
 // важность: 5
@@ -211,14 +214,17 @@ console.log( getMaxSubSum([-1, 2, 3, -9]));
 // Примеры:
 
 function camelize(str) {
-  return str.split('-').map((el, i) => {
-    if(i == 0) {
-      return el
-    }
-    const arr = el.split('')
-    arr[0] = arr[0].toUpperCase()
-    return arr.join('')
-  }).join('')
+  return str
+    .split("-")
+    .map((el, i) => {
+      if (i == 0) {
+        return el;
+      }
+      const arr = el.split("");
+      arr[0] = arr[0].toUpperCase();
+      return arr.join("");
+    })
+    .join("");
 }
 
 console.log(camelize("background-color"));
@@ -234,14 +240,14 @@ console.log(camelize("background-color"));
 let arr1 = [5, 3, 8, 1];
 
 function filterRange(arr, a, b) {
-  return arr.filter(el => el >= a && el <= b)
+  return arr.filter((el) => el >= a && el <= b);
 }
 
 let filtered = filterRange(arr1, 1, 4);
 
-console.log( filtered ); // 3,1 (совпадающие значения)
+console.log(filtered); // 3,1 (совпадающие значения)
 
-console.log( arr1 ); // 5,3,8,1 (без изменений)
+console.log(arr1); // 5,3,8,1 (без изменений)
 
 // Фильтрация по диапазону "на месте"
 // важность: 4
@@ -253,25 +259,24 @@ console.log( arr1 ); // 5,3,8,1 (без изменений)
 
 let arr3 = [5, 3, 8, 1];
 function filterRangeInPlace(arr, a, b) {
-for(let i = 0; i < arr.length; i++) {
-  if(arr[i] < a || arr[i] > b) {
-    arr.splice(i, 1)
-    i--;
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] < a || arr[i] > b) {
+      arr.splice(i, 1);
+      i--;
+    }
   }
-}
 }
 
 filterRangeInPlace(arr3, 1, 4); // удалены числа вне диапазона 1..4
 
-alert( arr3 ); // [3, 1]
+alert(arr3); // [3, 1]
 
 // Сортировать в порядке по убыванию
 // важность: 4
 let arr4 = [5, 2, 1, -10, 8];
-arr4.sort((a, b) => b - a)
+arr4.sort((a, b) => b - a);
 
-
-console.log(arr4);// 8, 5, 2, 1, -10
+console.log(arr4); // 8, 5, 2, 1, -10
 
 // Скопировать и отсортировать массив
 // важность: 5
@@ -282,14 +287,14 @@ console.log(arr4);// 8, 5, 2, 1, -10
 let arr5 = ["HTML", "JavaScript", "CSS"];
 
 function copySorted(arr) {
-  const copy = [...arr]
-  return copy.sort()
+  const copy = [...arr];
+  return copy.sort();
 }
 
 let sorted = copySorted(arr5);
 
-console.log( sorted ); // CSS, HTML, JavaScript
-console.log( arr5 ); // HTML, JavaScript, CSS (без изменений)
+console.log(sorted); // CSS, HTML, JavaScript
+console.log(arr5); // HTML, JavaScript, CSS (без изменений)
 
 // Создать расширяемый калькулятор
 // важность: 5
@@ -321,26 +326,25 @@ console.log( arr5 ); // HTML, JavaScript, CSS (без изменений)
 
 function Calculator() {
   this.methods = {
-    '-': (a, b) => a - b,
-    '+': (a, b) => a + b
-  }
-  this.calculate = function(str) {
-    let [a, operator, b] = str.split(' ')
-    return this.methods[operator](+a, +b)
-  }
-  this.addMethod = function(name, func) {
-    this.methods[name] = func
-  }
+    "-": (a, b) => a - b,
+    "+": (a, b) => a + b,
+  };
+  this.calculate = function (str) {
+    let [a, operator, b] = str.split(" ");
+    return this.methods[operator](+a, +b);
+  };
+  this.addMethod = function (name, func) {
+    this.methods[name] = func;
+  };
 }
 
-let calc = new Calculator;
+let calc = new Calculator();
 
-console.log( calc.calculate("3 + 7") ); // 10
+console.log(calc.calculate("3 + 7")); // 10
 
 calc.addMethod("**", (a, b) => a ** b);
 
-console.log(calc.calculate("2 ** 3")) //8
-
+console.log(calc.calculate("2 ** 3")); //8
 
 // Трансформировать в массив имён
 // важность: 5
@@ -352,11 +356,11 @@ let vasya = { name: "Вася", age: 25 };
 let petya = { name: "Петя", age: 30 };
 let masha = { name: "Маша", age: 28 };
 
-let users = [ vasya, petya, masha ];
+let users = [vasya, petya, masha];
 
-let names = users.map(el => el.name)
+let names = users.map((el) => el.name);
 
-console.log( names ); // Вася, Петя, Маша
+console.log(names); // Вася, Петя, Маша
 
 // Трансформировать в объекты
 // важность: 5
@@ -370,10 +374,12 @@ let vasya1 = { name: "Вася", surname: "Пупкин", id: 1 };
 let petya1 = { name: "Петя", surname: "Иванов", id: 2 };
 let masha1 = { name: "Маша", surname: "Петрова", id: 3 };
 
-let users1 = [ vasya1, petya1, masha1 ];
+let users1 = [vasya1, petya1, masha1];
 
-let usersMapped = users1.map(el => ({fullName: el.name + ' ' + el.surname, id: el.id})
-)
+let usersMapped = users1.map((el) => ({
+  fullName: el.name + " " + el.surname,
+  id: el.id,
+}));
 
 // /*
 // usersMapped = [
@@ -383,8 +389,8 @@ let usersMapped = users1.map(el => ({fullName: el.name + ' ' + el.surname, id: e
 // ]
 // */
 
-console.log( usersMapped[0].id ) // 1
-console.log( usersMapped[0].fullName ) // Вася Пупкин
+console.log(usersMapped[0].id); // 1
+console.log(usersMapped[0].fullName); // Вася Пупкин
 // Итак, на самом деле вам нужно трансформировать один массив объектов в другой. Попробуйте использовать =>. Это небольшая уловка.
 
 // Отсортировать пользователей по возрасту
@@ -397,9 +403,9 @@ let vasya2 = { name: "Вася", age: 25 };
 let petya2 = { name: "Петя", age: 30 };
 let masha2 = { name: "Маша", age: 28 };
 
-let arr6 = [ vasya2, petya2, masha2 ];
+let arr6 = [vasya2, petya2, masha2];
 function sortByAge(arr) {
-  arr.sort((a, b) => a.age - b.age)
+  arr.sort((a, b) => a.age - b.age);
 }
 sortByAge(arr6);
 
@@ -425,16 +431,27 @@ console.log(arr6[0].name, arr6[1].name, arr6[2].name); // Вася Маша Пе
 // // ...
 // Все последовательности элементов должны иметь одинаковую вероятность. Например, [1,2,3] может быть переупорядочено как [1,2,3] или [1,3,2], или [3,1,2] и т.д., с равной вероятностью каждого случая.
 
-function shuffle(arr) {
-  for(let i = arr.length - 1; i > 0; i--) {
-    let j = Math.floor(Math.random() * (i + 1)) //случайный индекс от 0 до i
-    [arr[i], arr[j]] = [arr[j], arr[i]]; //поменяли местами
-  }
-}
+// function shuffle(arr) {
+//   for(let i = arr.length - 1; i > 0; i--) {
+//     let j = Math.floor(Math.random() * (i + 1)) //случайный индекс от 0 до i
+//     [arr[i], arr[j]] = [arr[j], arr[i]]; //поменяли местами
+//   }
+// }
 
-let testArr = [1, 2, 3]
-shuffle(testArr)
+let testArr = [1, 2, 3];
+// shuffle(testArr)
 console.log(testArr);
+
+const arr11 = new Array(1000000).fill(Math.random());
+const arr12 = new Array(1000000).fill(Math.random());
+
+console.time("start");
+const res1 = [...arr11, ...arr12];
+console.timeEnd("start");
+
+console.time("start2");
+const res2 = arr11.concat(arr12);
+console.timeEnd("start2");
 </script>
 
 <style>
