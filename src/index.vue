@@ -1,6 +1,5 @@
 <script setup>
 import { RouterLink, RouterView } from "vue-router";
-import HelloWorld from "./components/HelloWorld.vue";
 </script>
 
 <template>
@@ -19,6 +18,7 @@ import HelloWorld from "./components/HelloWorld.vue";
         <RouterLink to="/chapter1">Chapter 1</RouterLink>
         <RouterLink to="/chapter2">Chapter 2</RouterLink>
         <RouterLink to="/chapter3">Chapter 3</RouterLink>
+        <RouterLink to="/chapter4">Chapter 4</RouterLink>
       </nav>
     </div>
   </header>
