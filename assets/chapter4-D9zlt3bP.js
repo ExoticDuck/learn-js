@@ -1,0 +1,1 @@
+import{_ as t,a as o,o as s,b as a}from"./index-_4a0G3Pt.js";const r={},c={class:"about"};function n(_,e){return s(),o("div",c,e[0]||(e[0]=[a("h1",null,"Chapter 4",-1)]))}const d=t(r,[["render",n]]);export{d as default};
