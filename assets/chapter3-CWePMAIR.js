@@ -1,4 +1,4 @@
-import{C as l}from"./CodeDisplay-B_23lu_r.js";import{d as Ce,r as u,a as _e,o as $e,b as j,e as n,w as c,u as r,n as Oe,U as i,_ as Pe}from"./index-_4a0G3Pt.js";const Ne=Ce({__name:"chapter3",setup(Fe){const S=u(`// Сумма пользовательских чисел
+import{C as l}from"./CodeDisplay-BM2OI5dk.js";import{d as Ce,r as u,a as _e,o as $e,b as j,e as n,w as c,u as r,n as Oe,U as i,_ as Pe}from"./index-D6pjww6V.js";const Ne=Ce({__name:"chapter3",setup(Fe){const S=u(`// Сумма пользовательских чисел
 // важность: 5
 // Создайте скрипт, который запрашивает ввод двух чисел (используйте prompt) и после показывает их сумму.
 

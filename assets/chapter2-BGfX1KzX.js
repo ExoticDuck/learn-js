@@ -1,4 +1,4 @@
-import{C as o}from"./CodeDisplay-B_23lu_r.js";import{d as J,r as u,a as A,o as M,b as r,e as n,w as s,n as N,f as P,_ as U}from"./index-_4a0G3Pt.js";const B=J({__name:"chapter2",setup(F){const i=u(`//* Привет, object
+import{C as o}from"./CodeDisplay-BM2OI5dk.js";import{d as J,r as u,a as A,o as M,b as r,e as n,w as s,n as N,f as P,_ as U}from"./index-D6pjww6V.js";const B=J({__name:"chapter2",setup(F){const i=u(`//* Привет, object
 // важность: 5
 // Напишите код, выполнив задание из каждого пункта отдельной строкой:
 

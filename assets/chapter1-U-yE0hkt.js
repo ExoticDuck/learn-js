@@ -1,4 +1,4 @@
-import{C as o}from"./CodeDisplay-B_23lu_r.js";import{d as ge,r as a,a as me,o as pe,b as u,e as n,w as s,n as de,f as be,_ as ke}from"./index-_4a0G3Pt.js";const ve=ge({__name:"chapter1",setup(xe){const c=a(`
+import{C as o}from"./CodeDisplay-BM2OI5dk.js";import{d as ge,r as a,a as me,o as pe,b as u,e as n,w as s,n as de,f as be,_ as ke}from"./index-D6pjww6V.js";const ve=ge({__name:"chapter1",setup(xe){const c=a(`
 // *Работа с переменными
 // важность: 2
 // Объявите две переменные: admin и name.
