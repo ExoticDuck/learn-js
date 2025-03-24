@@ -1,4 +1,4 @@
-npm run build
+npm run lint && npn run type-check && npm run build
 
 LOGSTRING=$(git log)
 COMMIT=$(echo $LOGSTRING | awk '{print $2}')
