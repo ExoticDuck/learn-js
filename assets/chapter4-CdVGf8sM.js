@@ -1,4 +1,4 @@
-import{d as _,r as e,a as f,o as v,b as s,w as b,e as k,v as g,F as h,f as C,n as y,t as F,_ as R}from"./index-CFvXGzUr.js";import{C as T}from"./CodeRunner-B-7732XL.js";const w=["value"],B=_({__name:"chapter4",setup(E){const i=e(`// Вычислить сумму чисел до данного
+import{d as _,r as e,a as f,o as v,b as s,w as b,e as k,v as g,F as h,f as C,n as y,t as F,_ as R}from"./index-DfODlT1E.js";import{C as T}from"./CodeRunner-CawHdNt7.js";const w=["value"],B=_({__name:"chapter4",setup(E){const i=e(`// Вычислить сумму чисел до данного
 // важность: 5
 // Напишите функцию sumTo(n), которая вычисляет сумму чисел 1 + 2 + ... + n.
 
