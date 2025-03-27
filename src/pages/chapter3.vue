@@ -362,6 +362,12 @@
 import CodeDisplay from "@/components/CodeDisplay/CodeDisplay.vue";
 import { VCodeBlock } from "@wdns/vue-code-block";
 import { ref } from "vue";
+
+type Person = {
+  name: string;
+  age: number;
+};
+
 // Можно ли добавить свойство строке?
 // важность: 5
 // Взгляните на следующий код:
@@ -818,7 +824,7 @@ const task11 = ref(`
 
 function runTask11() {
   let arr3 = [5, 3, 8, 1];
-  function filterRangeInPlace(arr, a, b) {
+  function filterRangeInPlace(arr: number[], a, b) {
     for (let i = 0; i < arr.length; i++) {
       if (arr[i] < a || arr[i] > b) {
         arr.splice(i, 1);
@@ -968,12 +974,16 @@ function Calculator() {
 // Не лишним будет добавить обработку ошибок.
 
 function runTask14() {
-  function Calculator() {
+  function Calculator(this: {
+    methods: { [key: string]: (a: number, b: number) => number };
+    calculate: (str: string) => number;
+    addMethod: (name: string, func: (a: number, b: number) => number) => void;
+  }) {
     this.methods = {
       "-": (a, b) => a - b,
       "+": (a, b) => a + b,
     };
-    this.calculate = function (str) {
+    this.calculate = function (str: string) {
       let [a, operator, b] = str.split(" ");
       return this.methods[operator](+a, +b);
     };
@@ -986,7 +996,7 @@ function runTask14() {
 
   console.log(calc.calculate("3 + 7")); // 10
 
-  calc.addMethod("**", (a, b) => a ** b);
+  calc.addMethod("**", (a: number, b: number) => a ** b);
 
   console.log(calc.calculate("2 ** 3")); //8
 }
@@ -1063,11 +1073,16 @@ console.log(usersMapped[0].fullName); // Вася Пупкин`);
 
 // Например:
 function runTask16() {
+  type Person = {
+    name: string;
+    surname: string;
+    id: number;
+  };
   let vasya1 = { name: "Вася", surname: "Пупкин", id: 1 };
   let petya1 = { name: "Петя", surname: "Иванов", id: 2 };
   let masha1 = { name: "Маша", surname: "Петрова", id: 3 };
 
-  let users1 = [vasya1, petya1, masha1];
+  let users1: Person[] = [vasya1, petya1, masha1];
 
   let usersMapped = users1.map((el) => ({
     fullName: el.name + " " + el.surname,
@@ -1116,8 +1131,8 @@ function runTask17() {
   let petya2 = { name: "Петя", age: 30 };
   let masha2 = { name: "Маша", age: 28 };
 
-  let arr6 = [vasya2, petya2, masha2];
-  function sortByAge(arr) {
+  let arr6: Person[] = [vasya2, petya2, masha2];
+  function sortByAge(arr: Person[]) {
     arr.sort((a, b) => a.age - b.age);
   }
   sortByAge(arr6);
@@ -1174,7 +1189,7 @@ console.log(testArr);`);
 // // ...
 // Все последовательности элементов должны иметь одинаковую вероятность. Например, [1,2,3] может быть переупорядочено как [1,2,3] или [1,3,2], или [3,1,2] и т.д., с равной вероятностью каждого случая.
 
-function shuffle(arr) {
+function shuffle(arr: number[]) {
   for (let i = arr.length - 1; i > 0; i--) {
     let j = Math.floor(Math.random() * (i + 1));
 
@@ -1242,9 +1257,9 @@ function runTask19() {
   let petya3 = { name: "Петя", age: 30 };
   let masha3 = { name: "Маша", age: 29 };
 
-  let arr7 = [vasya3, petya3, masha3];
+  let arr7: Person[] = [vasya3, petya3, masha3];
 
-  function getAverageAge(arr) {
+  function getAverageAge(arr: Person[]) {
     return Math.round(
       arr.reduce((acc, person) => acc + person.age, 0) / arr.length
     );
@@ -1293,8 +1308,8 @@ alert(unique(strings)); // кришна, харе, :-O`);
 
 // Например:
 function runTask20() {
-  function unique(arr) {
-    const uniqueElements = [];
+  function unique(arr: string[]) {
+    const uniqueElements: string[] = [];
     arr.forEach((el) => {
       if (!uniqueElements.includes(el)) {
         uniqueElements.push(el);
@@ -1359,13 +1374,18 @@ usersById = {
 // Например:
 
 function runTask21() {
+  type User = {
+    id: string;
+    name: string;
+    age: number;
+  };
   let users2 = [
     { id: "john", name: "John Smith", age: 20 },
     { id: "ann", name: "Ann Smith", age: 24 },
     { id: "pete", name: "Pete Peterson", age: 31 },
   ];
 
-  function groupById(users) {
+  function groupById(users: User[]) {
     return users.reduce((result, el) => {
       return { ...result, [el.id]: { name: el.name, age: el.age } };
     }, {});
@@ -1422,13 +1442,16 @@ console.log(sumSalaries(salaries)); // 650`);
 // Например:
 
 function runTask22() {
-  let salaries = {
+  type Salaries = {
+    [key: string]: number;
+  };
+  let salaries: Salaries = {
     John: 100,
     Pete: 300,
     Mary: 250,
   };
 
-  function sumSalaries(salaries) {
+  function sumSalaries(salaries: Salaries) {
     let result = 0;
     if (!Object.keys(salaries).length) return result;
     for (const salary of Object.values(salaries)) {
@@ -1464,7 +1487,7 @@ function runTask23() {
     age: 30,
   };
 
-  function count(obj) {
+  function count(obj: { [key: string]: number | string }) {
     return Object.keys(obj).length;
   }
 
@@ -1623,19 +1646,25 @@ console.log(getWeekDay(date1)); // нужно вывести "ВТ"`);
 function runTask26() {
   let date1 = new Date(2012, 0, 3); // 3 января 2012 года
 
-  const getWeekDay = (date) => {
-    const dayFromDate = date.getDay();
+  const getWeekDay = (date: Date) => {
+    const dayFromDate: DayNumber = date.getDay();
     console.log(dayFromDate);
 
-    const days = {
-      0: "ПН",
-      1: "ВТ",
-      2: "СР",
-      3: "ЧТ",
-      4: "ПТ",
-      5: "СБ",
-      6: "ВС",
+    type DayNumber = 0 | 1 | 2 | 3 | 4 | 5 | 6;
+    type Days = {
+      [key: DayNumber]: string;
     };
+
+    const days: Days = {
+      "0": "ПН",
+      "1": "ВТ",
+      "2": "СР",
+      "3": "ЧТ",
+      "4": "ПТ",
+      "5": "СБ",
+      "6": "ВС",
+    };
+
     return days[dayFromDate];
   };
   console.log(getWeekDay(date1)); // нужно вывести "ВТ"
@@ -1657,7 +1686,7 @@ alert(getLocalDay(date2)); // вторник, нужно показать 2`);
 function runTask27() {
   let date2 = new Date(2012, 0, 3); // 3 января 2012 года
 
-  const getLocalDay = (date) => {
+  const getLocalDay = (date: Date) => {
     return date.getDay();
   };
   alert(getLocalDay(date2)); // вторник, нужно показать 2
@@ -1692,7 +1721,7 @@ alert(getDateAgo(date3, 365)); // 2, (2 Jan 2014)`);
 function runTask28() {
   let date3 = new Date(2015, 0, 2);
 
-  const getDateAgo = (date, days) => {
+  const getDateAgo = (date: Date, days: number) => {
     const copy = new Date(date);
     copy.setDate(copy.getDate() - days);
     return copy.getDate();

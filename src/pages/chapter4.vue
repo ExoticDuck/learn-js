@@ -147,7 +147,7 @@ alert(sumTo(4));`);
 // важность: 5
 // Напишите функцию sumTo(n), которая вычисляет сумму чисел 1 + 2 + ... + n.
 function runTask0() {
-  function sumTo(n: number) {
+  function sumTo(n: number): number {
     if (n === 1) {
       return 1;
     }
@@ -181,7 +181,7 @@ alert(factorial(5));`);
 
 // n! = n * (n - 1) * (n - 2) * ...*1
 function runTask1() {
-  function factorial(n: number) {
+  function factorial(n: number): number {
     if (n === 1) {
       return 1;
     }

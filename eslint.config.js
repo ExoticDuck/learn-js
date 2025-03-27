@@ -9,7 +9,17 @@ export default [
   {
     ignores: ["node_modules/", "dist/"], // Игнорируем ненужные файлы
   },
-  js.configs.recommended, // Базовые правила JavaScript
+  {
+    ...js.configs.recommended, // Подключаем базовые правила для JS
+    languageOptions: {
+      ecmaVersion: "latest", // Поддержка всех современных возможностей JS
+      sourceType: "module", // Разрешает использовать import/export
+    },
+    rules: {
+      "no-console": "warn", // Предупреждение при console.log
+      "no-alert": "warn", // Предупреждение при alert()
+    },
+  },
   {
     files: ["**/*.ts", "**/*.vue"],
     languageOptions: {
@@ -19,7 +29,14 @@ export default [
         sourceType: "module",
         extraFileExtensions: [".vue"],
       },
+      ecmaVersion: "latest", // Поддержка современных возможностей JS
+      sourceType: "module", // Поддержка ES-модулей
+      globals: {
+        // alert: "readonly", // Разрешаем использовать alert
+        // console: "readonly", // Разрешаем использовать console
+      },
     },
+
     plugins: {
       "@typescript-eslint": tseslint,
     },
