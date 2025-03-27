@@ -4,313 +4,19 @@
       <h1>Chapter 1</h1>
     </div>
 
-    <CodeDisplay @execute="runTask0">
-      <template #default>
-        <VCodeBlock
-          :code="task0"
-          highlightjs
-          lang="javascript"
-          theme="neon-bunny"
-        />
-      </template>
-    </CodeDisplay>
+    <select v-model="selectedTask">
+      <option v-for="(task, i) in tasks" :key="i" :value="task.value">
+        {{ `Задача ${i + 1}` }}
+      </option>
+    </select>
 
-    <CodeDisplay @execute="runTask1">
-      <template #default>
-        <VCodeBlock
-          :code="task1"
-          highlightjs
-          lang="javascript"
-          theme="neon-bunny"
-        />
-      </template>
-    </CodeDisplay>
-    <CodeDisplay @execute="runTask2">
-      <template #default>
-        <VCodeBlock
-          :code="task2"
-          highlightjs
-          lang="javascript"
-          theme="neon-bunny"
-        />
-      </template>
-    </CodeDisplay>
-    <CodeDisplay @execute="runTask3">
-      <template #default>
-        <VCodeBlock
-          :code="task3"
-          highlightjs
-          lang="javascript"
-          theme="neon-bunny"
-        />
-      </template>
-    </CodeDisplay>
-    <CodeDisplay>
-      <template #default>
-        <VCodeBlock
-          :code="task4"
-          highlightjs
-          lang="javascript"
-          theme="neon-bunny"
-        />
-      </template>
-    </CodeDisplay>
-    <CodeDisplay>
-      <template #default>
-        <VCodeBlock
-          :code="task5"
-          highlightjs
-          lang="javascript"
-          theme="neon-bunny"
-        />
-      </template>
-    </CodeDisplay>
-    <CodeDisplay>
-      <template #default>
-        <VCodeBlock
-          :code="task6"
-          highlightjs
-          lang="javascript"
-          theme="neon-bunny"
-        />
-      </template>
-    </CodeDisplay>
-    <CodeDisplay @execute="runTask7">
-      <template #default>
-        <VCodeBlock
-          :code="task7"
-          highlightjs
-          lang="javascript"
-          theme="neon-bunny"
-        />
-      </template>
-    </CodeDisplay>
-    <CodeDisplay @execute="runTask8">
-      <template #default>
-        <VCodeBlock
-          :code="task8"
-          highlightjs
-          lang="javascript"
-          theme="neon-bunny"
-        />
-      </template>
-    </CodeDisplay>
-    <CodeDisplay @execute="runTask9">
-      <template #default>
-        <VCodeBlock
-          :code="task9"
-          highlightjs
-          lang="javascript"
-          theme="neon-bunny"
-        />
-      </template>
-    </CodeDisplay>
-    <CodeDisplay @execute="runTask10">
-      <template #default>
-        <VCodeBlock
-          :code="task10"
-          highlightjs
-          lang="javascript"
-          theme="neon-bunny"
-        />
-      </template>
-    </CodeDisplay>
-    <CodeDisplay @execute="runTask11">
-      <template #default>
-        <VCodeBlock
-          :code="task11"
-          highlightjs
-          lang="javascript"
-          theme="neon-bunny"
-        />
-      </template>
-    </CodeDisplay>
-    <CodeDisplay @execute="runTask12">
-      <template #default>
-        <VCodeBlock
-          :code="task12"
-          highlightjs
-          lang="javascript"
-          theme="neon-bunny"
-        />
-      </template>
-    </CodeDisplay>
-    <CodeDisplay @execute="runTask13">
-      <template #default>
-        <VCodeBlock
-          :code="task13"
-          highlightjs
-          lang="javascript"
-          theme="neon-bunny"
-        />
-      </template>
-    </CodeDisplay>
-    <CodeDisplay @execute="runTask14">
-      <template #default>
-        <VCodeBlock
-          :code="task14"
-          highlightjs
-          lang="javascript"
-          theme="neon-bunny"
-        />
-      </template>
-    </CodeDisplay>
-    <CodeDisplay @execute="runTask15">
-      <template #default>
-        <VCodeBlock
-          :code="task15"
-          highlightjs
-          lang="javascript"
-          theme="neon-bunny"
-        />
-      </template>
-    </CodeDisplay>
-    <CodeDisplay @execute="runTask16">
-      <template #default>
-        <VCodeBlock
-          :code="task16"
-          highlightjs
-          lang="javascript"
-          theme="neon-bunny"
-        />
-      </template>
-    </CodeDisplay>
-    <CodeDisplay @execute="runTask17">
-      <template #default>
-        <VCodeBlock
-          :code="task17"
-          highlightjs
-          lang="javascript"
-          theme="neon-bunny"
-        />
-      </template>
-    </CodeDisplay>
-    <CodeDisplay @execute="runTask18">
-      <template #default>
-        <VCodeBlock
-          :code="task18"
-          highlightjs
-          lang="javascript"
-          theme="neon-bunny"
-        />
-      </template>
-    </CodeDisplay>
-    <CodeDisplay @execute="runTask19">
-      <template #default>
-        <VCodeBlock
-          :code="task19"
-          highlightjs
-          lang="javascript"
-          theme="neon-bunny"
-        />
-      </template>
-    </CodeDisplay>
-    <CodeDisplay @execute="runTask20">
-      <template #default>
-        <VCodeBlock
-          :code="task20"
-          highlightjs
-          lang="javascript"
-          theme="neon-bunny"
-        />
-      </template>
-    </CodeDisplay>
-    <CodeDisplay @execute="runTask21">
-      <template #default>
-        <VCodeBlock
-          :code="task21"
-          highlightjs
-          lang="javascript"
-          theme="neon-bunny"
-        />
-      </template>
-    </CodeDisplay>
-    <CodeDisplay @execute="runTask22">
-      <template #default>
-        <VCodeBlock
-          :code="task22"
-          highlightjs
-          lang="javascript"
-          theme="neon-bunny"
-        />
-      </template>
-    </CodeDisplay>
-    <CodeDisplay @execute="runTask23">
-      <template #default>
-        <VCodeBlock
-          :code="task23"
-          highlightjs
-          lang="javascript"
-          theme="neon-bunny"
-        />
-      </template>
-    </CodeDisplay>
-    <CodeDisplay @execute="runTask24">
-      <template #default>
-        <VCodeBlock
-          :code="task24"
-          highlightjs
-          lang="javascript"
-          theme="neon-bunny"
-        />
-      </template>
-    </CodeDisplay>
-    <CodeDisplay @execute="runTask25">
-      <template #default>
-        <VCodeBlock
-          :code="task25"
-          highlightjs
-          lang="javascript"
-          theme="neon-bunny"
-        />
-      </template>
-    </CodeDisplay>
-    <CodeDisplay @execute="runTask26">
-      <template #default>
-        <VCodeBlock
-          :code="task26"
-          highlightjs
-          lang="javascript"
-          theme="neon-bunny"
-        />
-      </template>
-    </CodeDisplay>
-    <CodeDisplay @execute="runTask27">
-      <template #default>
-        <VCodeBlock
-          :code="task27"
-          highlightjs
-          lang="javascript"
-          theme="neon-bunny"
-        />
-      </template>
-    </CodeDisplay>
-    <CodeDisplay @execute="runTask28">
-      <template #default>
-        <VCodeBlock
-          :code="task28"
-          highlightjs
-          lang="javascript"
-          theme="neon-bunny"
-        />
-      </template>
-    </CodeDisplay>
-    <CodeDisplay @execute="runTask29">
-      <template #default>
-        <VCodeBlock
-          :code="task29"
-          highlightjs
-          lang="javascript"
-          theme="neon-bunny"
-        />
-      </template>
-    </CodeDisplay>
+    <CodeRunner :defaultCode="selectedTask" />
   </div>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
 import { ref } from "vue";
-import CodeDisplay from "../components/CodeDisplay/CodeDisplay.vue";
+import CodeRunner from "@/components/CodeRunner.vue";
 
 // alert("Я JavaScript!");
 const task0 = ref(`
@@ -1445,6 +1151,41 @@ function runTask29() {
     }
   );
 }
+
+const tasks = [
+  task0,
+  task1,
+  task2,
+  task3,
+  task4,
+  task5,
+  task6,
+  task7,
+  task8,
+  task9,
+  task10,
+  task11,
+  task12,
+  task13,
+  task14,
+  task15,
+  task16,
+  task17,
+  task18,
+  task19,
+  task20,
+  task21,
+  task22,
+  task23,
+  task24,
+  task25,
+  task26,
+  task27,
+  task28,
+  task29,
+];
+
+const selectedTask = ref(task0);
 </script>
 
 <style module>

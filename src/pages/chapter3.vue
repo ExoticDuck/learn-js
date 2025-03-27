@@ -4,363 +4,18 @@
       <h1>Chapter 3</h1>
     </div>
 
-    <CodeDisplay @execute="runTask0">
-      <template #default>
-        <VCodeBlock
-          :code="task0"
-          highlightjs
-          lang="javascript"
-          theme="neon-bunny"
-        />
-      </template>
-    </CodeDisplay>
+    <select v-model="selectedTask">
+      <option v-for="(task, i) in tasks" :key="i" :value="task.value">
+        {{ `Задача ${i + 1}` }}
+      </option>
+    </select>
 
-    <CodeDisplay
-      description="Напишите функцию ucFirst(str), возвращающую строку str с заглавным первым символом."
-      @execute="ucFirst('Вася')"
-    >
-      <template #default>
-        <VCodeBlock
-          :code="task1"
-          highlightjs
-          lang="javascript"
-          theme="neon-bunny"
-        />
-      </template>
-    </CodeDisplay>
-
-    <CodeDisplay
-      description="Напишите функцию checkSpam(str), возвращающую true, если str содержит 'viagra' или 'XXX', а иначе false. Функция должна быть нечувствительна к регистру:"
-      @execute="checkSpam('buy ViAgRA now')"
-    >
-      <template #default>
-        <VCodeBlock
-          :code="task2"
-          highlightjs
-          lang="javascript"
-          theme="neon-bunny"
-        />
-      </template>
-    </CodeDisplay>
-
-    <CodeDisplay
-      @execute="truncate('Вот, что мне хотелось бы сказать на эту тему:', 20)"
-    >
-      <template #default>
-        <VCodeBlock
-          :code="task3"
-          highlightjs
-          label="Усечение строки"
-          lang="javascript"
-          theme="neon-bunny"
-        />
-      </template>
-    </CodeDisplay>
-
-    <CodeDisplay @execute="extractCurrencyValue('$120')">
-      <template #default>
-        <VCodeBlock
-          :code="task4"
-          highlightjs
-          label="Получить число из суммы денег"
-          lang="javascript"
-          theme="neon-bunny"
-        />
-      </template>
-    </CodeDisplay>
-
-    <CodeDisplay description="Скопирован ли массив?" @execute="copyArray">
-      <template #default>
-        <VCodeBlock
-          :code="task5"
-          highlightjs
-          lang="javascript"
-          theme="neon-bunny"
-        />
-      </template>
-    </CodeDisplay>
-
-    <CodeDisplay
-      description="Создайте массив styles с элементами «Джаз» и «Блюз». Добавьте «Рок-н-ролл» в конец. Замените значение в середине на «Классика». Ваш код для поиска значения в середине должен работать для массивов с любой длиной. Удалите первый элемент массива и покажите его. Вставьте Рэп и Регги в начало массива. Массив по ходу выполнения операц Джаз, Блюз Джаз, Блюз, Рок-н-ролл Джаз, Классика, Рок-н-ролл Классика, Рок-н-ролл Рэп, Регги, Классика, Рок-н-ролл"
-      @execute="getStyles"
-    >
-      <template #default>
-        <VCodeBlock
-          :code="task6"
-          highlightjs
-          lang="javascript"
-          theme="neon-bunny"
-        />
-      </template>
-    </CodeDisplay>
-
-    <CodeDisplay @execute="sumInput">
-      <template #default>
-        <VCodeBlock
-          :code="task7"
-          highlightjs
-          lang="javascript"
-          theme="neon-bunny"
-        />
-      </template>
-    </CodeDisplay>
-
-    <CodeDisplay @execute="getMaxSubSum([-1, 2, 3, -9, 11])">
-      <template #default>
-        <VCodeBlock
-          :code="task8"
-          highlightjs
-          lang="javascript"
-          theme="neon-bunny"
-        />
-      </template>
-    </CodeDisplay>
-
-    <CodeDisplay @execute="camelize('background-color')">
-      <template #default>
-        <VCodeBlock
-          :code="task9"
-          highlightjs
-          lang="javascript"
-          theme="neon-bunny"
-        />
-      </template>
-    </CodeDisplay>
-
-    <CodeDisplay @execute="filterRange(arr1, 1, 4)">
-      <template #default>
-        <VCodeBlock
-          :code="task10"
-          highlightjs
-          lang="javascript"
-          theme="neon-bunny"
-        />
-      </template>
-    </CodeDisplay>
-
-    <CodeDisplay @execute="runTask11">
-      <template #default>
-        <VCodeBlock
-          :code="task11"
-          highlightjs
-          lang="javascript"
-          theme="neon-bunny"
-        />
-      </template>
-    </CodeDisplay>
-
-    <CodeDisplay @execute="runTask12">
-      <template #default>
-        <VCodeBlock
-          :code="task12"
-          highlightjs
-          lang="javascript"
-          theme="neon-bunny"
-        />
-      </template>
-    </CodeDisplay>
-
-    <CodeDisplay @execute="runTask13">
-      <template #default>
-        <VCodeBlock
-          :code="task13"
-          highlightjs
-          lang="javascript"
-          theme="neon-bunny"
-        />
-      </template>
-    </CodeDisplay>
-
-    <CodeDisplay @execute="runTask14">
-      <template #default>
-        <VCodeBlock
-          :code="task14"
-          highlightjs
-          lang="javascript"
-          theme="neon-bunny"
-        />
-      </template>
-    </CodeDisplay>
-    <CodeDisplay @execute="runTask15">
-      <template #default>
-        <VCodeBlock
-          :code="task15"
-          highlightjs
-          lang="javascript"
-          theme="neon-bunny"
-        />
-      </template>
-    </CodeDisplay>
-
-    <CodeDisplay @execute="runTask16">
-      <template #default>
-        <VCodeBlock
-          :code="task16"
-          highlightjs
-          lang="javascript"
-          theme="neon-bunny"
-        />
-      </template>
-    </CodeDisplay>
-
-    <CodeDisplay @execute="runTask17">
-      <template #default>
-        <VCodeBlock
-          :code="task17"
-          highlightjs
-          lang="javascript"
-          theme="neon-bunny"
-        />
-      </template>
-    </CodeDisplay>
-
-    <CodeDisplay @execute="shuffle(testArr)">
-      <template #default>
-        <VCodeBlock
-          :code="task18"
-          highlightjs
-          lang="javascript"
-          theme="neon-bunny"
-        />
-      </template>
-    </CodeDisplay>
-
-    <CodeDisplay @execute="runTask19">
-      <template #default>
-        <VCodeBlock
-          :code="task19"
-          highlightjs
-          lang="javascript"
-          theme="neon-bunny"
-        />
-      </template>
-    </CodeDisplay>
-    <CodeDisplay @execute="runTask20">
-      <template #default>
-        <VCodeBlock
-          :code="task20"
-          highlightjs
-          lang="javascript"
-          theme="neon-bunny"
-        />
-      </template>
-    </CodeDisplay>
-    <CodeDisplay @execute="runTask21">
-      <template #default>
-        <VCodeBlock
-          :code="task21"
-          highlightjs
-          lang="javascript"
-          theme="neon-bunny"
-        />
-      </template>
-    </CodeDisplay>
-    <CodeDisplay @execute="runTask22">
-      <template #default>
-        <VCodeBlock
-          :code="task22"
-          highlightjs
-          lang="javascript"
-          theme="neon-bunny"
-        />
-      </template>
-    </CodeDisplay>
-    <CodeDisplay @execute="runTask23">
-      <template #default>
-        <VCodeBlock
-          :code="task23"
-          highlightjs
-          lang="javascript"
-          theme="neon-bunny"
-        />
-      </template>
-    </CodeDisplay>
-    <CodeDisplay @execute="runTask24">
-      <template #default>
-        <VCodeBlock
-          :code="task24"
-          highlightjs
-          lang="javascript"
-          theme="neon-bunny"
-        />
-      </template>
-    </CodeDisplay>
-    <CodeDisplay @execute="runTask25">
-      <template #default>
-        <VCodeBlock
-          :code="task25"
-          highlightjs
-          lang="javascript"
-          theme="neon-bunny"
-        />
-      </template>
-    </CodeDisplay>
-    <CodeDisplay @execute="runTask26">
-      <template #default>
-        <VCodeBlock
-          :code="task26"
-          highlightjs
-          lang="javascript"
-          theme="neon-bunny"
-        />
-      </template>
-    </CodeDisplay>
-    <CodeDisplay @execute="runTask27">
-      <template #default>
-        <VCodeBlock
-          :code="task27"
-          highlightjs
-          lang="javascript"
-          theme="neon-bunny"
-        />
-      </template>
-    </CodeDisplay>
-    <CodeDisplay @execute="runTask28">
-      <template #default>
-        <VCodeBlock
-          :code="task28"
-          highlightjs
-          lang="javascript"
-          theme="neon-bunny"
-        />
-      </template>
-    </CodeDisplay>
-    <CodeDisplay @execute="runTask29">
-      <template #default>
-        <VCodeBlock
-          :code="task29"
-          highlightjs
-          lang="javascript"
-          theme="neon-bunny"
-        />
-      </template>
-    </CodeDisplay>
-    <CodeDisplay @execute="runTask30">
-      <template #default>
-        <VCodeBlock
-          :code="task30"
-          highlightjs
-          lang="javascript"
-          theme="neon-bunny"
-        />
-      </template>
-    </CodeDisplay>
-    <CodeDisplay @execute="runTask31">
-      <template #default>
-        <VCodeBlock
-          :code="task31"
-          highlightjs
-          lang="javascript"
-          theme="neon-bunny"
-        />
-      </template>
-    </CodeDisplay>
+    <CodeRunner :defaultCode="selectedTask" />
   </div>
 </template>
 
 <script lang="ts" setup>
-import CodeDisplay from "@/components/CodeDisplay/CodeDisplay.vue";
-import { VCodeBlock } from "@wdns/vue-code-block";
+import CodeRunner from "@/components/CodeRunner.vue";
 import { ref } from "vue";
 
 type Person = {
@@ -395,10 +50,12 @@ console.log(a + b);`);
 
 // P.S. Есть «подводный камень» при работе с типами.
 function runTask0() {
-  const a = +prompt("Введите первое число"); //prompt вернет строку, поэтому преобразуем к числу через +
-  const b = +prompt("Введите второе число");
+  const a = prompt("Введите первое число"); //prompt вернет строку, поэтому преобразуем к числу через +
+  const b = prompt("Введите второе число");
+  const num1 = a !== null ? +a : NaN;
+  const num2 = b !== null ? +b : NaN;
 
-  console.log(a + b);
+  console.log(num1 + num2);
 }
 // Сделать первый символ заглавным
 // важность: 5
@@ -454,7 +111,7 @@ const task2 = ref(`function checkSpam(str) {
 checkSpam("buy ViAgRA now")
 `);
 
-function checkSpam(str) {
+function checkSpam(str: string) {
   const toLower = str.toLowerCase();
   let result = false;
   if (toLower.includes("xxx") || toLower.includes("viagra")) {
@@ -482,7 +139,7 @@ const task3 = ref(`function truncate(str, maxLength) {
 
 truncate("Вот, что мне хотелось бы сказать на эту тему:", 20)`);
 
-function truncate(str, maxLength) {
+function truncate(str: string, maxLength: number) {
   console.log(
     str.length > maxLength ? str.substring(0, maxLength - 1) + "…" : str
   );
@@ -697,7 +354,7 @@ getMaxSubSum([-1, 2, 3, -9, 11])
 // getMaxSubSum([100, -9, 2, -3, 5]) == 100
 // getMaxSubSum([1, 2, 3]) == 6 (берём все)
 
-function getMaxSubSum(arr) {
+function getMaxSubSum(arr: number[]) {
   let result = 0;
   let sum = 0;
   for (const item of arr) {
@@ -743,7 +400,7 @@ camelize("background-color")
 
 // Примеры:
 
-function camelize(str) {
+function camelize(str: string) {
   const result = str
     .split("-")
     .map((el, i) => {
@@ -786,7 +443,7 @@ function filterRange(arr, a, b) {
 
 let arr1 = [5, 3, 8, 1];
 
-function filterRange(arr, a, b) {
+function filterRange(arr: number[], a: number, b: number) {
   const result = arr.filter((el) => el >= a && el <= b);
   alert(result); // 3,1 (совпадающие значения)
   alert(arr); // 5,3,8,1 (без изменений)
@@ -824,7 +481,7 @@ const task11 = ref(`
 
 function runTask11() {
   let arr3 = [5, 3, 8, 1];
-  function filterRangeInPlace(arr: number[], a, b) {
+  function filterRangeInPlace(arr: number[], a: number, b: number) {
     for (let i = 0; i < arr.length; i++) {
       if (arr[i] < a || arr[i] > b) {
         arr.splice(i, 1);
@@ -883,7 +540,7 @@ console.log(arr5); // HTML, JavaScript, CSS (без изменений)
 function runTask13() {
   let arr5 = ["HTML", "JavaScript", "CSS"];
 
-  function copySorted(arr) {
+  function copySorted(arr: string[]) {
     const copy = [...arr];
     return copy.sort();
   }
@@ -992,7 +649,8 @@ function runTask14() {
     };
   }
 
-  let calc = new Calculator();
+  const calc = Object.create(Calculator.prototype);
+  Calculator.call(calc);
 
   console.log(calc.calculate("3 + 7")); // 10
 
@@ -1647,22 +1305,21 @@ function runTask26() {
   let date1 = new Date(2012, 0, 3); // 3 января 2012 года
 
   const getWeekDay = (date: Date) => {
-    const dayFromDate: DayNumber = date.getDay();
-    console.log(dayFromDate);
+    const dayFromDate: DayNumber = date.getDay() as DayNumber;
 
     type DayNumber = 0 | 1 | 2 | 3 | 4 | 5 | 6;
     type Days = {
-      [key: DayNumber]: string;
+      [key in DayNumber]: string;
     };
 
     const days: Days = {
-      "0": "ПН",
-      "1": "ВТ",
-      "2": "СР",
-      "3": "ЧТ",
-      "4": "ПТ",
-      "5": "СБ",
-      "6": "ВС",
+      0: "ПН",
+      1: "ВТ",
+      2: "СР",
+      3: "ЧТ",
+      4: "ПТ",
+      5: "СБ",
+      6: "ВС",
     };
 
     return days[dayFromDate];
@@ -1874,38 +1531,73 @@ alert(formatDate(new Date(new Date().getTime() - 86400 * 1000)));`);
 // В противном случае, полная дата в формате "DD.MM.YY HH:mm". А именно: "день.месяц.год часы:минуты", всё в виде двух цифр, т.е. 31.12.16 10:00.
 // Например:
 
-function runTask31() {
-  const formatDate = (date: Date) => {
-    const now = new Date();
-    const diffMilliseconds = now.getTime() - date.getTime();
-    const diffSeconds = Math.round((now.getTime() - date.getTime()) / 1000);
-    const diffMinutes = Math.round(diffSeconds / 60);
-    if (diffMilliseconds < 1000) {
-      return "прямо сейчас";
-    }
-    if (diffSeconds > 1000 && diffSeconds < 60) {
-      return `${diffSeconds} сек. назад`;
-    }
-    if (diffMinutes < 60) {
-      return `${diffMinutes} минут назад`;
-    }
-    const day = date.getDate();
-    const month = date.getMonth() + 1; //тк месяца нумеруются с 0
-    const year = date.getFullYear();
-    const hours = date.getHours();
-    const minutes = date.getMinutes();
-    return `${day}.${month}.${year} ${hours}:${minutes}`;
-  };
+const formatDate = (date: Date) => {
+  const now = new Date();
+  const diffMilliseconds = now.getTime() - date.getTime();
+  const diffSeconds = Math.round((now.getTime() - date.getTime()) / 1000);
+  const diffMinutes = Math.round(diffSeconds / 60);
+  if (diffMilliseconds < 1000) {
+    return "прямо сейчас";
+  }
+  if (diffSeconds > 1000 && diffSeconds < 60) {
+    return `${diffSeconds} сек. назад`;
+  }
+  if (diffMinutes < 60) {
+    return `${diffMinutes} минут назад`;
+  }
+  const day = date.getDate();
+  const month = date.getMonth() + 1; //тк месяца нумеруются с 0
+  const year = date.getFullYear();
+  const hours = date.getHours();
+  const minutes = date.getMinutes();
+  return `${day}.${month}.${year} ${hours}:${minutes}`;
+};
 
-  alert(formatDate(new Date(new Date().getTime() - 1))); // "прямо сейчас"
+// alert(formatDate(new Date(new Date().getTime() - 1))); // "прямо сейчас"
 
-  alert(formatDate(new Date(new Date().getTime() - 30 * 1000))); // "30 сек. назад"
+// alert(formatDate(new Date(new Date().getTime() - 30 * 1000))); // "30 сек. назад"
 
-  alert(formatDate(new Date(new Date().getTime() - 5 * 60 * 1000))); // "5 мин. назад"
+// alert(formatDate(new Date(new Date().getTime() - 5 * 60 * 1000))); // "5 мин. назад"
 
-  // вчерашняя дата вроде 31.12.2016, 20:00
-  alert(formatDate(new Date(new Date().getTime() - 86400 * 1000)));
-}
+// // вчерашняя дата вроде 31.12.2016, 20:00
+// alert(formatDate(new Date(new Date().getTime() - 86400 * 1000)));
+
+const tasks = [
+  task0,
+  task1,
+  task2,
+  task3,
+  task4,
+  task5,
+  task6,
+  task7,
+  task8,
+  task9,
+  task10,
+  task11,
+  task12,
+  task13,
+  task14,
+  task15,
+  task16,
+  task17,
+  task18,
+  task19,
+  task20,
+  task21,
+  task22,
+  task23,
+  task24,
+  task25,
+  task26,
+  task27,
+  task28,
+  task29,
+  task30,
+  task31,
+];
+
+const selectedTask = ref(task0);
 </script>
 
 <style lang="css" module>

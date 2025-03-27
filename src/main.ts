@@ -2,8 +2,8 @@ import "./assets/main.css";
 
 import { createApp } from "vue";
 import App from "./index.vue";
-import router from "./router";
 import { createVCodeBlock } from "@wdns/vue-code-block";
+import router from "./router/index";
 
 const VCodeBlock = createVCodeBlock({
   // options

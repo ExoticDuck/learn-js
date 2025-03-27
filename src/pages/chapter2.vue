@@ -4,111 +4,18 @@
       <h1>Chapter 2</h1>
     </div>
 
-    <CodeDisplay @execute="runTask0">
-      <template #default>
-        <VCodeBlock
-          :code="task0"
-          highlightjs
-          lang="javascript"
-          theme="neon-bunny"
-        />
-      </template>
-    </CodeDisplay>
-    <CodeDisplay @execute="runTask1">
-      <template #default>
-        <VCodeBlock
-          :code="task1"
-          highlightjs
-          lang="javascript"
-          theme="neon-bunny"
-        />
-      </template>
-    </CodeDisplay>
-    <CodeDisplay @execute="runTask2">
-      <template #default>
-        <VCodeBlock
-          :code="task2"
-          highlightjs
-          lang="javascript"
-          theme="neon-bunny"
-        />
-      </template>
-    </CodeDisplay>
-    <CodeDisplay @execute="runTask3">
-      <template #default>
-        <VCodeBlock
-          :code="task3"
-          highlightjs
-          lang="javascript"
-          theme="neon-bunny"
-        />
-      </template>
-    </CodeDisplay>
-    <CodeDisplay @execute="runTask4">
-      <template #default>
-        <VCodeBlock
-          :code="task4"
-          highlightjs
-          lang="javascript"
-          theme="neon-bunny"
-        />
-      </template>
-    </CodeDisplay>
-    <CodeDisplay @execute="runTask5">
-      <template #default>
-        <VCodeBlock
-          :code="task5"
-          highlightjs
-          lang="javascript"
-          theme="neon-bunny"
-        />
-      </template>
-    </CodeDisplay>
-    <CodeDisplay @execute="runTask6">
-      <template #default>
-        <VCodeBlock
-          :code="task6"
-          highlightjs
-          lang="javascript"
-          theme="neon-bunny"
-        />
-      </template>
-    </CodeDisplay>
-    <CodeDisplay @execute="runTask7">
-      <template #default>
-        <VCodeBlock
-          :code="task7"
-          highlightjs
-          lang="javascript"
-          theme="neon-bunny"
-        />
-      </template>
-    </CodeDisplay>
-    <CodeDisplay @execute="runTask8">
-      <template #default>
-        <VCodeBlock
-          :code="task8"
-          highlightjs
-          lang="javascript"
-          theme="neon-bunny"
-        />
-      </template>
-    </CodeDisplay>
-    <CodeDisplay @execute="runTask9">
-      <template #default>
-        <VCodeBlock
-          :code="task9"
-          highlightjs
-          lang="javascript"
-          theme="neon-bunny"
-        />
-      </template>
-    </CodeDisplay>
+    <select v-model="selectedTask">
+      <option v-for="(task, i) in tasks" :key="i" :value="task.value">
+        {{ `Задача ${i + 1}` }}
+      </option>
+    </select>
+
+    <CodeRunner :defaultCode="selectedTask" />
   </div>
 </template>
 
 <script lang="ts" setup>
-import CodeDisplay from "@/components/CodeDisplay/CodeDisplay.vue";
+import CodeRunner from "@/components/CodeRunner.vue";
 import { ref } from "vue";
 
 const task0 = ref(`//* Привет, object
@@ -194,7 +101,7 @@ console.log(isEmpty({}));`);
 // alert( isEmpty(schedule) ); // false
 
 function runTask1() {
-  function isEmpty(obj) {
+  function isEmpty(obj: { [key: string]: string }) {
     for (const key in obj) {
       if (key in obj) {
         return true;
@@ -256,7 +163,12 @@ console.log(getSumSalary(salaries));`);
 // важность: 5
 // У нас есть объект, в котором хранятся зарплаты нашей команды:
 function runTask3() {
-  let salaries = {
+  type Salaries = {
+    John: number;
+    Ann: number;
+    Pete: number;
+  };
+  let salaries: Salaries = {
     John: 100,
     Ann: 160,
     Pete: 130,
@@ -265,10 +177,10 @@ function runTask3() {
 
   // Если объект salaries пуст, то результат должен быть 0.
 
-  function getSumSalary(obj) {
+  function getSumSalary(obj: Salaries) {
     let sum = 0;
     for (const key in obj) {
-      sum += obj[key];
+      sum += obj[key as keyof Salaries];
     }
     return sum;
   }
@@ -313,7 +225,12 @@ console.log(menu);`);
 // Например:
 function runTask4() {
   // до вызова функции
-  let menu = {
+  type Menu = {
+    width: number;
+    height: number;
+    title: string;
+  };
+  let menu: Menu = {
     width: 200,
     height: 300,
     title: "My menu",
@@ -328,10 +245,11 @@ function runTask4() {
   //   title: "My menu"
   // };
 
-  function multiplyNumeric(obj) {
-    for (const key in obj) {
+  function multiplyNumeric(obj: Menu) {
+    for (const key of Object.keys(obj) as Array<keyof Menu>) {
       if (typeof obj[key] === "number") {
-        obj[key] *= 2;
+        //@ts-ignore
+        obj[key] = (obj[key as keyof Menu] as number) * 2;
       }
     }
   }
@@ -364,6 +282,7 @@ function runTask5() {
   function makeUser() {
     return {
       name: "John",
+      //@ts-ignore
       ref: this,
     };
   }
@@ -409,8 +328,12 @@ function runTask6() {
     a: 0,
     b: 0,
     read() {
-      this.a = +prompt("Введите a");
-      this.b = +prompt("Введите b");
+      let a = prompt("Введите a");
+      let b = prompt("Введите b");
+      let num1 = a !== null ? +a : NaN;
+      let num2 = b !== null ? +b : NaN;
+      this.a = num1;
+      this.b = num2;
       return this;
     },
     sum() {
@@ -544,12 +467,22 @@ alert("Mul=" + calculator1.mul());`);
 // Например:
 
 function runTask8() {
-  function Calculator() {
+  function Calculator(this: {
+    a: number;
+    b: number;
+    read: () => void;
+    sum: () => number;
+    mul: () => void;
+  }) {
     this.a = 0;
     this.b = 0;
     this.read = function () {
-      this.a = +prompt("Введите a");
-      this.b = +prompt("Введите b");
+      let a = prompt("Введите a");
+      let num1 = a !== null ? +a : NaN;
+      this.a = num1;
+      let b = prompt("Введите b");
+      let num2 = b !== null ? +b : NaN;
+      this.b = num2;
     };
     this.sum = function () {
       return this.a + this.b;
@@ -559,7 +492,8 @@ function runTask8() {
     };
   }
 
-  let calculator1 = new Calculator();
+  const calculator1 = Object.create(Calculator.prototype);
+  Calculator.call(calculator1);
   calculator1.read();
 
   alert("Sum=" + calculator1.sum());
@@ -604,21 +538,40 @@ alert(accumulator.value); // выведет сумму этих значений
 
 // Ниже вы можете посмотреть работу кода:
 function runTask9() {
-  function Accumulator(startingValue) {
+  function Accumulator(
+    this: { value: number; read: () => void },
+    startingValue?: number
+  ) {
     this.value = startingValue || 0;
     this.read = function () {
-      let increment = +prompt("Введите число");
-      this.value += increment;
+      let increment = prompt("Введите число");
+      let numberValue = increment !== null ? +increment : NaN;
+      this.value += numberValue;
     };
   }
-
-  let accumulator = new Accumulator(1); // начальное значение 1
+  const accumulator = Object.create(Accumulator.prototype);
+  Accumulator.call(accumulator);
 
   accumulator.read(); // прибавляет введённое пользователем значение к текущему значению
   accumulator.read(); // прибавляет введённое пользователем значение к текущему значению
 
   alert(accumulator.value); // выведет сумму этих значений
 }
+
+const tasks = [
+  task0,
+  task1,
+  task2,
+  task3,
+  task4,
+  task5,
+  task6,
+  task7,
+  task8,
+  task9,
+];
+
+const selectedTask = ref(task0);
 </script>
 
 <style module>

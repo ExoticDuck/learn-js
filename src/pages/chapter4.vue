@@ -1,63 +1,21 @@
 <template>
   <div :class="$style.container">
     <div class="about">
-      <h1>Chapter 4</h1>
+      <h1>Chapter 3</h1>
     </div>
-    <CodeDisplay @execute="runTask0">
-      <template #default>
-        <VCodeBlock
-          :code="task0"
-          highlightjs
-          lang="javascript"
-          theme="neon-bunny"
-        />
-      </template>
-    </CodeDisplay>
-    <CodeDisplay @execute="runTask1">
-      <template #default>
-        <VCodeBlock
-          :code="task1"
-          highlightjs
-          lang="javascript"
-          theme="neon-bunny"
-        />
-      </template>
-    </CodeDisplay>
-    <CodeDisplay @execute="runTask2">
-      <template #default>
-        <VCodeBlock
-          :code="task2"
-          highlightjs
-          lang="javascript"
-          theme="neon-bunny"
-        />
-      </template>
-    </CodeDisplay>
-    <CodeDisplay @execute="runTask3">
-      <template #default>
-        <VCodeBlock
-          :code="task3"
-          highlightjs
-          lang="javascript"
-          theme="neon-bunny"
-        />
-      </template>
-    </CodeDisplay>
-    <CodeDisplay @execute="runTask4">
-      <template #default>
-        <VCodeBlock
-          :code="task4"
-          highlightjs
-          lang="javascript"
-          theme="neon-bunny"
-        />
-      </template>
-    </CodeDisplay>
+
+    <select v-model="selectedTask">
+      <option v-for="(task, i) in tasks" :key="i" :value="task.value">
+        {{ `Задача ${i + 1}` }}
+      </option>
+    </select>
+
+    <CodeRunner :defaultCode="selectedTask" />
   </div>
 </template>
 
 <script lang="ts" setup>
-import CodeDisplay from "@/components/CodeDisplay/CodeDisplay.vue";
+import CodeRunner from "@/components/CodeRunner.vue";
 import { ref } from "vue";
 
 // function quickSort(arr: any[]) {
@@ -146,16 +104,15 @@ alert(sumTo(4));`);
 // Вычислить сумму чисел до данного
 // важность: 5
 // Напишите функцию sumTo(n), которая вычисляет сумму чисел 1 + 2 + ... + n.
-function runTask0() {
-  function sumTo(n: number): number {
-    if (n === 1) {
-      return 1;
-    }
-    return n + sumTo(n - 1);
-  }
 
-  alert(sumTo(4));
+function sumTo(n: number): number {
+  if (n === 1) {
+    return 1;
+  }
+  return n + sumTo(n - 1);
 }
+
+// alert(sumTo(4));
 
 const task1 = ref(`// Вычислить факториал
 // важность: 4
@@ -180,15 +137,12 @@ alert(factorial(5));`);
 // Определение факториала можно записать как:
 
 // n! = n * (n - 1) * (n - 2) * ...*1
-function runTask1() {
-  function factorial(n: number): number {
-    if (n === 1) {
-      return 1;
-    }
-    return n * factorial(n - 1);
-  }
 
-  alert(factorial(5));
+function factorial(n: number): number {
+  if (n === 1) {
+    return 1;
+  }
+  return n * factorial(n - 1);
 }
 
 const task2 = ref(`// Числа Фибоначчи
@@ -220,15 +174,11 @@ alert(fib(5));`);
 
 // Напишите функцию fib(n) которая возвращает n-е число Фибоначчи.
 
-function runTask2() {
-  function fib(n: number): number {
-    if (n <= 1) {
-      return n;
-    }
-    return fib(n - 1) + fib(n - 2);
+function fib(n: number): number {
+  if (n <= 1) {
+    return n;
   }
-
-  alert(fib(5));
+  return fib(n - 1) + fib(n - 2);
 }
 
 const task3 = ref(`// Вывод односвязного списка
@@ -285,20 +235,19 @@ let list = {
 // Напишите функцию printList(list), которая выводит элементы списка по одному.
 
 // Сделайте два варианта решения: используя цикл и через рекурсию.
-function runTask3() {
-  function printList(list: ListType) {
-    // let currentList = list;
-    // while (currentList) {
-    //   console.log(currentList.value);
-    //   currentList = currentList.next;
-    // }
-    console.log(list.value);
-    if (list.next) {
-      printList(list.next);
-    }
+
+function printList(list: ListType) {
+  // let currentList = list;
+  // while (currentList) {
+  //   console.log(currentList.value);
+  //   currentList = currentList.next;
+  // }
+  console.log(list.value);
+  if (list.next) {
+    printList(list.next);
   }
-  printList(list);
 }
+printList(list);
 
 const task4 = ref(`// Вывод односвязного списка в обратном порядке
 // важность: 5
@@ -332,24 +281,27 @@ type ListType = {
   value: number;
   next: ListType | null;
 };
-function runTask4() {
-  function printListReverse(list: ListType) {
-    // const res = [];
-    // let currentList = list;
-    // while (currentList) {
-    //   res.unshift(currentList.value);
-    //   currentList = currentList.next;
-    // }
-    // res.forEach((value) => console.log(value));
 
-    if (list.next) {
-      printListReverse(list.next);
-    }
-    console.log(list.value);
+function printListReverse(list: ListType) {
+  // const res = [];
+  // let currentList = list;
+  // while (currentList) {
+  //   res.unshift(currentList.value);
+  //   currentList = currentList.next;
+  // }
+  // res.forEach((value) => console.log(value));
+
+  if (list.next) {
+    printListReverse(list.next);
   }
-
-  printListReverse(list);
+  // console.log(list.value);
 }
+
+printListReverse(list);
+
+const tasks = [task0, task1, task2, task3, task4];
+
+const selectedTask = ref(task0);
 </script>
 <style module>
 .container {
