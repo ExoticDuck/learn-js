@@ -1,4 +1,4 @@
-import{C as o}from"./CodeDisplay-BM2OI5dk.js";import{d as J,r as u,a as A,o as M,b as r,e as n,w as s,n as N,f as P,_ as U}from"./index-D6pjww6V.js";const B=J({__name:"chapter2",setup(F){const i=u(`//* Привет, object
+import{d as w,r as e,a as l,o as u,b as s,w as v,e as _,v as j,F as S,f as C,n as V,t as E,_ as M}from"./index-CFvXGzUr.js";import{C as N}from"./CodeRunner-B-7732XL.js";const U=["value"],A=w({__name:"chapter2",setup(x){const r=e(`//* Привет, object
 // важность: 5
 // Напишите код, выполнив задание из каждого пункта отдельной строкой:
 
@@ -17,7 +17,7 @@ user.name = "John";
 user.surname = "Smith";
 user.name = "Pete";
 delete user.name;
-console.log(user)`);function c(){let e={};e.name="John",e.surname="Smith",e.name="Pete",delete e.name,console.log(e)}const h=u(`// Проверка на пустоту
+console.log(user)`),c=e(`// Проверка на пустоту
 // важность: 5
 // Напишите функцию isEmpty(obj), которая возвращает true, если у объекта нет свойств, иначе false.
 
@@ -41,7 +41,7 @@ function isEmpty(obj) {
 }
 
 console.log(isEmpty({ name: "john" }));
-console.log(isEmpty({}));`);function m(){function e(a){for(const t in a)if(t in a)return!0;return!1}console.log(e({name:"john"})),console.log(e({}))}const d=u(`// Объекты-константы?
+console.log(isEmpty({}));`),i=e(`// Объекты-константы?
 // важность: 5
 // Можно ли изменить объект, объявленный с помощью const? Как вы думаете?
 
@@ -50,7 +50,7 @@ const user1 = {
 };
 
 // это будет работать?
-user1.name = "Pete"; //да, т.к. в переменной хранится ссылка на значение объекта. При изменении свойства ссылка останется неизменной.`);function p(){}const f=u(`// Сумма свойств объекта
+user1.name = "Pete"; //да, т.к. в переменной хранится ссылка на значение объекта. При изменении свойства ссылка останется неизменной.`),m=e(`// Сумма свойств объекта
 // важность: 5
 // У нас есть объект, в котором хранятся зарплаты нашей команды:
 
@@ -71,7 +71,7 @@ function getSumSalary(obj) {
   return sum;
 }
 
-console.log(getSumSalary(salaries));`);function g(){let e={John:100,Ann:160,Pete:130};function a(t){let l=0;for(const V in t)l+=t[V];return l}console.log(a(e))}const y=u(`// Умножаем все числовые свойства на 2
+console.log(getSumSalary(salaries));`),d=e(`// Умножаем все числовые свойства на 2
 // важность: 3
 // Создайте функцию multiplyNumeric(obj), которая умножает все числовые свойства объекта obj на 2.
 
@@ -100,7 +100,7 @@ function multiplyNumeric(obj) {
     }
   }
 }
-console.log(menu);`);function b(){let e={width:200,height:300,title:"My menu"};a(e);function a(t){for(const l in t)typeof t[l]=="number"&&(t[l]*=2)}console.log(e)}const k=u(`// Использование "this" в литерале объекта
+console.log(menu);`),p=e(`// Использование "this" в литерале объекта
 // важность: 5
 // Здесь функция makeUser возвращает объект.
 
@@ -115,7 +115,7 @@ function makeUser() {
 
 let user2 = makeUser();
 
-console.log( user2.ref.name ); // Каким будет результат? - ошибка, ref можно сделать методом и вернуть this`);function j(){function e(){return{name:"John",ref:this}}let a=e();console.log(a.ref.name)}const v=u(`// Создайте калькулятор
+console.log( user2.ref.name ); // Каким будет результат? - ошибка, ref можно сделать методом и вернуть this`),h=e(`// Создайте калькулятор
 // важность: 5
 // Создайте объект calculator (калькулятор) с тремя методами:
 
@@ -138,7 +138,7 @@ let calculator = {
   },
 };
 
-console.log(calculator.read().sum(), calculator.read().multiply());`);function w(){let e={a:0,b:0,read(){return this.a=+prompt("Введите a"),this.b=+prompt("Введите b"),this},sum(){return this.a+this.b},multiply(){return this.a+this.b}};console.log(e.read().sum(),e.read().multiply())}const _=u(`// Цепь вызовов
+console.log(calculator.read().sum(), calculator.read().multiply());`),f=e(`// Цепь вызовов
 // важность: 2
 // У нас есть объект ladder (лестница), который позволяет подниматься и спускаться:
 
@@ -168,7 +168,7 @@ let ladder = {
 // ladder.showStep(); // 0
 // Измените код методов up, down и showStep таким образом, чтобы их вызов можно было сделать по цепочке, например так:
 
-ladder.up().up().down().showStep().down().showStep(); // показывает 1 затем 0`);function S(){({step:0,up(){return this.step++,this},down(){return this.step--,this},showStep:function(){return console.log(this.step),this}}).up().up().down().showStep().down().showStep()}const E=u(`//  Создайте калькулятор при помощи конструктора, new Calculator
+ladder.up().up().down().showStep().down().showStep(); // показывает 1 затем 0`),b=e(`//  Создайте калькулятор при помощи конструктора, new Calculator
 // важность: 5
 // Создайте функцию-конструктор Calculator, которая создаёт объекты с тремя методами:
 
@@ -196,7 +196,7 @@ let calculator1 = new Calculator();
 calculator1.read();
 
 alert("Sum=" + calculator1.sum());
-alert("Mul=" + calculator1.mul());`);function C(){function e(){this.a=0,this.b=0,this.read=function(){this.a=+prompt("Введите a"),this.b=+prompt("Введите b")},this.sum=function(){return this.a+this.b},this.mul=function(){return this.a*this.b}}let a=new e;a.read(),alert("Sum="+a.sum()),alert("Mul="+a.mul())}const x=u(`// Создайте new Accumulator
+alert("Mul=" + calculator1.mul());`),y=e(`// Создайте new Accumulator
 // важность: 5
 // Создайте функцию-конструктор Accumulator(startingValue).
 
@@ -221,4 +221,4 @@ let accumulator = new Accumulator(1); // начальное значение 1
 accumulator.read(); // прибавляет введённое пользователем значение к текущему значению
 accumulator.read(); // прибавляет введённое пользователем значение к текущему значению
 
-alert(accumulator.value); // выведет сумму этих значений`);function T(){function e(t){this.value=t||0,this.read=function(){let l=+prompt("Введите число");this.value+=l}}let a=new e(1);a.read(),a.read(),alert(a.value)}return(e,a)=>{const t=P("VCodeBlock");return M(),A("div",{class:N(e.$style.container)},[a[0]||(a[0]=r("div",{class:"about"},[r("h1",null,"Chapter 2")],-1)),n(o,{onExecute:c},{default:s(()=>[n(t,{code:i.value,highlightjs:"",lang:"javascript",theme:"neon-bunny"},null,8,["code"])]),_:1}),n(o,{onExecute:m},{default:s(()=>[n(t,{code:h.value,highlightjs:"",lang:"javascript",theme:"neon-bunny"},null,8,["code"])]),_:1}),n(o,{onExecute:p},{default:s(()=>[n(t,{code:d.value,highlightjs:"",lang:"javascript",theme:"neon-bunny"},null,8,["code"])]),_:1}),n(o,{onExecute:g},{default:s(()=>[n(t,{code:f.value,highlightjs:"",lang:"javascript",theme:"neon-bunny"},null,8,["code"])]),_:1}),n(o,{onExecute:b},{default:s(()=>[n(t,{code:y.value,highlightjs:"",lang:"javascript",theme:"neon-bunny"},null,8,["code"])]),_:1}),n(o,{onExecute:j},{default:s(()=>[n(t,{code:k.value,highlightjs:"",lang:"javascript",theme:"neon-bunny"},null,8,["code"])]),_:1}),n(o,{onExecute:w},{default:s(()=>[n(t,{code:v.value,highlightjs:"",lang:"javascript",theme:"neon-bunny"},null,8,["code"])]),_:1}),n(o,{onExecute:S},{default:s(()=>[n(t,{code:_.value,highlightjs:"",lang:"javascript",theme:"neon-bunny"},null,8,["code"])]),_:1}),n(o,{onExecute:C},{default:s(()=>[n(t,{code:E.value,highlightjs:"",lang:"javascript",theme:"neon-bunny"},null,8,["code"])]),_:1}),n(o,{onExecute:T},{default:s(()=>[n(t,{code:x.value,highlightjs:"",lang:"javascript",theme:"neon-bunny"},null,8,["code"])]),_:1})],2)}}}),$="_container_1h7kd_2",z="_about_1h7kd_9",D={container:$,about:z},q={$style:D},I=U(B,[["__cssModules",q]]);export{I as default};
+alert(accumulator.value); // выведет сумму этих значений`),k=[r,c,i,m,d,p,h,f,b,y],a=e(r);return(g,t)=>(u(),l("div",{class:V(g.$style.container)},[t[1]||(t[1]=s("div",{class:"about"},[s("h1",null,"Chapter 2")],-1)),v(s("select",{"onUpdate:modelValue":t[0]||(t[0]=o=>a.value=o)},[(u(),l(S,null,C(k,(o,n)=>s("option",{key:n,value:o.value},E(`Задача ${n+1}`),9,U)),64))],512),[[j,a.value]]),_(N,{defaultCode:a.value},null,8,["defaultCode"])],2))}}),J="_container_1h7kd_2",P="_about_1h7kd_9",B={container:J,about:P},$={$style:B},z=M(A,[["__cssModules",$]]);export{z as default};

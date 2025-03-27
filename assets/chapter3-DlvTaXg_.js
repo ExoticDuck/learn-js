@@ -1,4 +1,4 @@
-import{C as l}from"./CodeDisplay-BM2OI5dk.js";import{d as Ce,r as u,a as _e,o as $e,b as j,e as n,w as c,u as r,n as Oe,U as i,_ as Pe}from"./index-D6pjww6V.js";const Ne=Ce({__name:"chapter3",setup(Fe){const S=u(`// Сумма пользовательских чисел
+import{d as Y,r as e,a as i,o as g,b as o,w as G,e as K,v as Q,F as X,f as Z,n as ee,t as te,_ as ae}from"./index-CFvXGzUr.js";import{C as re}from"./CodeRunner-B-7732XL.js";const se=["value"],oe=Y({__name:"chapter3",setup(ie){const l=e(`// Сумма пользовательских чисел
 // важность: 5
 // Создайте скрипт, который запрашивает ввод двух чисел (используйте prompt) и после показывает их сумму.
 
@@ -7,7 +7,7 @@ import{C as l}from"./CodeDisplay-BM2OI5dk.js";import{d as Ce,r as u,a as _e,o as
 const a = +prompt("Введите первое число"); //prompt вернет строку, поэтому преобразуем к числу через +
 const b = +prompt("Введите второе число");
 
-console.log(a + b);`);function D(){const t=+prompt("Введите первое число"),e=+prompt("Введите второе число");console.log(t+e)}const w=u(`function ucFirst(str) {
+console.log(a + b);`),d=e(`function ucFirst(str) {
     let result = str
     .split("")
     .map((key, i) => (i === 0 ? key.toUpperCase() : key))
@@ -16,7 +16,7 @@ console.log(a + b);`);function D(){const t=+prompt("Введите первое 
     return result;
 }
 
-ucFirst("вася")`);function y(t){let e=t.split("").map((a,o)=>o===0?a.toUpperCase():a).join("");return console.log(e),e}console.log(y("вася"));const k=u(`function checkSpam(str) {
+ucFirst("вася")`);function m(t){let a=t.split("").map((r,s)=>s===0?r.toUpperCase():r).join("");return console.log(a),a}console.log(m("вася"));const f=e(`function checkSpam(str) {
   const toLower = str.toLowerCase();
   let result = false;
   if (toLower.includes("xxx") || toLower.includes("viagra")) {
@@ -29,16 +29,16 @@ ucFirst("вася")`);function y(t){let e=t.split("").map((a,o)=>o===0?a.toUpper
 }
 
 checkSpam("buy ViAgRA now")
-`);function p(t){const e=t.toLowerCase();let a=!1;return e.includes("xxx")||e.includes("viagra")?(a=!0,console.log(a),a):(console.log(a),a)}console.log(p("buy ViAgRA now"));const M=u(`function truncate(str, maxLength) {
+`);function y(t){const a=t.toLowerCase();let r=!1;return a.includes("xxx")||a.includes("viagra")?(r=!0,console.log(r),r):(console.log(r),r)}console.log(y("buy ViAgRA now"));const p=e(`function truncate(str, maxLength) {
   return str.length > maxLength ? str.substring(0, maxLength - 1) + "…" : str;
 }
 
-truncate("Вот, что мне хотелось бы сказать на эту тему:", 20)`);function h(t,e){return console.log(t.length>e?t.substring(0,e-1)+"…":t),t.length>e?t.substring(0,e-1)+"…":t}console.log(h("Вот, что мне хотелось бы сказать на эту тему:",20)),console.log(h("Всем привет!",20));const T=u(`
+truncate("Вот, что мне хотелось бы сказать на эту тему:", 20)`);function u(t,a){return console.log(t.length>a?t.substring(0,a-1)+"…":t),t.length>a?t.substring(0,a-1)+"…":t}console.log(u("Вот, что мне хотелось бы сказать на эту тему:",20)),console.log(u("Всем привет!",20));const h=e(`
 function extractCurrencyValue(currency) {
   return +currency.substring(1);
 }
 
-extractCurrencyValue("$120")`);function b(t){return console.log(+t.substring(1)),+t.substring(1)}console.log(b("$120")===120);const x=u(`function copyArray() {
+extractCurrencyValue("$120")`);function S(t){return console.log(+t.substring(1)),+t.substring(1)}console.log(S("$120")===120);const b=e(`function copyArray() {
   let fruits = ["Яблоки", "Груша", "Апельсин"];
 
   // добавляем новое значение в "копию"
@@ -47,7 +47,7 @@ extractCurrencyValue("$120")`);function b(t){return console.log(+t.substring(1))
 
   // что в fruits?
   alert(fruits.length); // Банан, Яблоки, Груша, Апельсин (обе переменные ссылаются на один массив)
-}`);function E(){let t=["Яблоки","Груша","Апельсин"];t.push("Банан"),alert(t.length)}const A=u(`function getStyles() {
+}`),w=e(`function getStyles() {
 const styles = ["Джаз", "Блюз"];
 styles.push("Рок-н-ролл");
 console.log(styles);
@@ -59,7 +59,7 @@ console.log(styles.shift());
 console.log(styles);
 
 styles.unshift("Рэп", "Регги");
-cons`);function C(){const t=["Джаз","Блюз"];t.push("Рок-н-ролл"),console.log(t),t[Math.ceil(t.length/2-1)]="Классика",console.log(t),console.log(t.shift()),console.log(t),t.unshift("Рэп","Регги"),console.log(t)}const _=u(`
+cons`),D=e(`
 // Сумма введённых чисел
 // важность: 4
 // Напишите функцию sumInput(), которая:
@@ -82,7 +82,7 @@ function sumInput() {
   return result;
 }
 
-`);function $(){const t=[];for(;;){const a=prompt("Введите число","0");if(a===null||a===""||isNaN(+a))break;t.push(+a)}const e=t.reduce((a,o)=>a+o,0);return alert(e),e}const O=u(`// Подмассив наибольшей суммы
+`),k=e(`// Подмассив наибольшей суммы
 // важность: 2
 // На входе массив чисел, например: arr = [1, -2, 3, 4, -9, 6].
 
@@ -114,7 +114,7 @@ function getMaxSubSum(arr) {
 }
 
 getMaxSubSum([-1, 2, 3, -9, 11])
-`);function P(t){let e=0,a=0;for(const o of t)a+=o,e=Math.max(e,a),a<0&&(a=0);return alert(e),e}const N=u(`// Переведите текст вида border-left-width в borderLeftWidth
+`),M=e(`// Переведите текст вида border-left-width в borderLeftWidth
 // важность: 5
 // Напишите функцию camelize(str), которая преобразует строки вида «my-short-string» в «myShortString».
 
@@ -137,7 +137,7 @@ function camelize(str) {
 }
 
 camelize("background-color")
-`);function J(t){const e=t.split("-").map((a,o)=>{if(o==0)return a;const s=a.split("");return s[0]=s[0].toUpperCase(),s.join("")}).join("");return alert(e),e}const L=u(`// Фильтрация по диапазону
+`),v=e(`// Фильтрация по диапазону
 // важность: 4
 // Напишите функцию filterRange(arr, a, b), которая принимает массив arr, ищет элементы со значениями больше или равными a и меньше или равными b и возвращает результат в виде массива.
 
@@ -152,7 +152,7 @@ function filterRange(arr, a, b) {
   return result;
 }
 
-`);let B=[5,3,8,1];function I(t,e,a){const o=t.filter(s=>s>=e&&s<=a);return alert(o),alert(t),o}const F=u(`
+`),C=e(`
 // Фильтрация по диапазону "на месте"
 // важность: 4
 // Напишите функцию filterRangeInPlace(arr, a, b), которая принимает массив arr и удаляет из него все значения кроме тех, которые находятся между a и b. То есть, проверка имеет вид a ≤ arr[i] ≤ b.
@@ -172,7 +172,7 @@ function filterRange(arr, a, b) {
   filterRangeInPlace(arr3, 1, 4); // удалены числа вне диапазона 1..4
 
   alert(arr3); // [3, 1]
-`);function H(){let t=[5,3,8,1];function e(a,o,s){for(let g=0;g<a.length;g++)(a[g]<o||a[g]>s)&&(a.splice(g,1),g--)}e(t,1,4),alert(t)}const R=u(`
+`),A=e(`
 // Сортировать в порядке по убыванию
 // важность: 4
 
@@ -180,7 +180,7 @@ function filterRange(arr, a, b) {
   arr4.sort((a, b) => b - a);
 
   console.log(arr4); // 8, 5, 2, 1, -10
-`);function q(){let t=[5,2,1,-10,8];t.sort((e,a)=>a-e),console.log(t)}const V=u(`
+`),T=e(`
 // Скопировать и отсортировать массив
 // важность: 5
 // У нас есть массив строк arr. Нужно получить отсортированную копию, но оставить arr неизменённым.
@@ -196,7 +196,7 @@ let sorted = copySorted(arr5);
 console.log(sorted); // CSS, HTML, JavaScript
 console.log(arr5); // HTML, JavaScript, CSS (без изменений)
 }
-`);function U(){let t=["HTML","JavaScript","CSS"];function e(o){return[...o].sort()}let a=e(t);console.log(a),console.log(t)}const W=u(`// Создать расширяемый калькулятор
+`),j=e(`// Создать расширяемый калькулятор
 // важность: 5
 // Создайте функцию конструктор Calculator, которая создаёт «расширяемые» объекты калькулятора.
 
@@ -245,7 +245,7 @@ function Calculator() {
   calc.addMethod("**", (a, b) => a ** b);
 
   console.log(calc.calculate("2 ** 3")); //8
-`);function Y(){function t(){this.methods={"-":(a,o)=>a-o,"+":(a,o)=>a+o},this.calculate=function(a){let[o,s,g]=a.split(" ");return this.methods[s](+o,+g)},this.addMethod=function(a,o){this.methods[a]=o}}let e=new t;console.log(e.calculate("3 + 7")),e.addMethod("**",(a,o)=>a**o),console.log(e.calculate("2 ** 3"))}const z=u(`
+`),x=e(`
 // Трансформировать в массив имён
 // важность: 5
 // У вас есть массив объектов user, и в каждом из них есть user.name. Напишите код, который преобразует их в массив имён.
@@ -261,7 +261,7 @@ let users = [vasya, petya, masha];
 let names = users.map((el) => el.name);
 
 console.log(names); // Вася, Петя, Маша
-`);function X(){let s=[{name:"Вася",age:25},{name:"Петя",age:30},{name:"Маша",age:28}].map(g=>g.name);console.log(s)}const G=u(`// Трансформировать в объекты
+`),_=e(`// Трансформировать в объекты
 // важность: 5
 // У вас есть массив объектов user, и у каждого из объектов есть name, surname и id.
 
@@ -289,7 +289,7 @@ let usersMapped = users1.map((el) => ({
 // */
 
 console.log(usersMapped[0].id); // 1
-console.log(usersMapped[0].fullName); // Вася Пупкин`);function K(){let s=[{name:"Вася",surname:"Пупкин",id:1},{name:"Петя",surname:"Иванов",id:2},{name:"Маша",surname:"Петрова",id:3}].map(g=>({fullName:g.name+" "+g.surname,id:g.id}));console.log(s[0].id),console.log(s[0].fullName)}const Q=u(`// Отсортировать пользователей по возрасту
+console.log(usersMapped[0].fullName); // Вася Пупкин`),L=e(`// Отсортировать пользователей по возрасту
 // важность: 5
 // Напишите функцию sortByAge(users), которая принимает массив объектов со свойством age и сортирует их по нему.
 
@@ -307,7 +307,7 @@ sortByAge(arr6);
 
 // теперь: [vasya, masha, petya]
 console.log(arr6[0].name, arr6[1].name, arr6[2].name); // Вася Маша Петя
-`);function Z(){let o=[{name:"Вася",age:25},{name:"Петя",age:30},{name:"Маша",age:28}];function s(g){g.sort((d,m)=>d.age-m.age)}s(o),console.log(o[0].name,o[1].name,o[2].name)}const ee=u(`// Перемешайте массив
+`),N=e(`// Перемешайте массив
 // важность: 3
 // Напишите функцию shuffle(array), которая перемешивает (переупорядочивает случайным образом) элементы массива.
 
@@ -335,7 +335,7 @@ function shuffle(arr) {
 
 let testArr = [1, 2, 3];
 shuffle(testArr)
-console.log(testArr);`);function v(t){for(let e=t.length-1;e>0;e--){let a=Math.floor(Math.random()*(e+1)),o=t[e];t[e]=t[a],t[a]=o}}let f=[1,2,3];v(f),console.log(f);const te=u(`// console.time("start");
+console.log(testArr);`);function P(t){for(let a=t.length-1;a>0;a--){let r=Math.floor(Math.random()*(a+1)),s=t[a];t[a]=t[r],t[r]=s}}let c=[1,2,3];P(c),console.log(c);const B=e(`// console.time("start");
 // const res1 = [...arr11, ...arr12];
 // console.timeEnd("start");
 
@@ -363,7 +363,7 @@ function getAverageAge(arr) {
   );
 }
 
-alert(getAverageAge(arr7)); // (25 + 30 + 29) / 3 = 28`);function ae(){let o=[{name:"Вася",age:25},{name:"Петя",age:30},{name:"Маша",age:29}];function s(g){return Math.round(g.reduce((d,m)=>d+m.age,0)/g.length)}alert(s(o))}const ne=u(`// Оставить уникальные элементы массива
+alert(getAverageAge(arr7)); // (25 + 30 + 29) / 3 = 28`),$=e(`// Оставить уникальные элементы массива
 // важность: 4
 // Пусть arr – массив строк.
 
@@ -393,7 +393,7 @@ let strings = [
   ":-O",
 ];
 
-alert(unique(strings)); // кришна, харе, :-O`);function oe(){function t(a){const o=[];return a.forEach(s=>{o.includes(s)||o.push(s)}),o.join(", ")}alert(t(["кришна","кришна","харе","харе","харе","харе","кришна","кришна",":-O"]))}const se=u(`// Создайте объект с ключами из массива
+alert(unique(strings)); // кришна, харе, :-O`),E=e(`// Создайте объект с ключами из массива
 // важность: 4
 // Допустим, мы получили массив пользователей в виде {id:..., name:..., age:... }.
 
@@ -424,7 +424,7 @@ usersById = {
   ann: {id: 'ann', name: "Ann Smith", age: 24},
   pete: {id: 'pete', name: "Pete Peterson", age: 31},
 }
-*/`);function re(){let t=[{id:"john",name:"John Smith",age:20},{id:"ann",name:"Ann Smith",age:24},{id:"pete",name:"Pete Peterson",age:31}];function e(o){return o.reduce((s,g)=>({...s,[g.id]:{name:g.name,age:g.age}}),{})}let a=e(t);console.log(a)}const le=u(`// Сумма свойств объекта
+*/`),I=e(`// Сумма свойств объекта
 // важность: 5
 // Есть объект salaries с произвольным количеством свойств, содержащих заработные платы.
 
@@ -449,7 +449,7 @@ function sumSalaries(salaries) {
   return result;
 }
 
-console.log(sumSalaries(salaries)); // 650`);function ue(){let t={John:100,Pete:300,Mary:250};function e(a){let o=0;if(!Object.keys(a).length)return o;for(const s of Object.values(a))o+=s;return o}console.log(e(t))}const ce=u(`// Подсчёт количества свойств объекта
+console.log(sumSalaries(salaries)); // 650`),J=e(`// Подсчёт количества свойств объекта
 // важность: 5
 // Напишите функцию count(obj), которая возвращает количество свойств объекта:
 
@@ -462,7 +462,7 @@ function count(obj) {
   return Object.keys(obj).length;
 }
 
-console.log(count(user)); // 2`);function ie(){let t={name:"John",age:30};function e(a){return Object.keys(a).length}console.log(e(t))}const ge=u(`// Максимальная зарплата
+console.log(count(user)); // 2`),O=e(`// Максимальная зарплата
 // важность: 5
 // У нас есть объект salaries с зарплатами:
 
@@ -491,7 +491,7 @@ function topSalary(salaries: Salary) {
   }
   return nameOfEmployee;
 }
-console.log(topSalary(salaries2));`);function de(){let t={John:100,Pete:300,Mary:250};function e(a){if(!Object.keys(a).length)return null;let o=0,s="";for(const[g,d]of Object.entries(a))d>o&&(o=d,s=g);return s}console.log(e(t))}const me=u(`
+console.log(topSalary(salaries2));`),F=e(`
 // Создайте дату
 // важность: 5
 // Создайте объект Date для даты: 20 февраля 2012 года, 3 часа 12 минут. Временная зона – местная.
@@ -500,7 +500,7 @@ console.log(topSalary(salaries2));`);function de(){let t={John:100,Pete:300,Mary
 
 const date = new Date(2012, 1, 20, 3, 12)
 alert(date)
-`);function he(){const t=new Date(2012,1,20,3,12);alert(t)}const fe=u(`// Покажите день недели
+`),R=e(`// Покажите день недели
 // важность: 5
 // Напишите функцию getWeekDay(date), показывающую день недели в коротком формате: «ПН», «ВТ», «СР», «ЧТ», «ПТ», «СБ», «ВС».
 
@@ -523,7 +523,7 @@ const getWeekDay = (date) => {
   };
   return days[dayFromDate];
 };
-console.log(getWeekDay(date1)); // нужно вывести "ВТ"`);function ye(){let t=new Date(2012,0,3);console.log((a=>{const o=a.getDay();return console.log(o),{0:"ПН",1:"ВТ",2:"СР",3:"ЧТ",4:"ПТ",5:"СБ",6:"ВС"}[o]})(t))}const pe=u(`// День недели в европейской нумерации
+console.log(getWeekDay(date1)); // нужно вывести "ВТ"`),V=e(`// День недели в европейской нумерации
 // важность: 5
 // В Европейских странах неделя начинается с понедельника (день номер 1), затем идёт вторник (номер 2) и так до воскресенья (номер 7). Напишите функцию getLocalDay(date), которая возвращает «европейский» день недели для даты date.
 
@@ -532,7 +532,7 @@ let date2 = new Date(2012, 0, 3); // 3 января 2012 года
 const getLocalDay = (date) => {
   return date.getDay();
 };
-alert(getLocalDay(date2)); // вторник, нужно показать 2`);function be(){let t=new Date(2012,0,3);alert((a=>a.getDay())(t))}const ve=u(`// Какой день месяца был много дней назад?
+alert(getLocalDay(date2)); // вторник, нужно показать 2`),q=e(`// Какой день месяца был много дней назад?
 // важность: 4
 // Создайте функцию getDateAgo(date, days), возвращающую число, которое было days дней назад от даты date.
 
@@ -549,7 +549,7 @@ const getDateAgo = (date, days) => {
 };
 alert(getDateAgo(date3, 1)); // 1, (1 Jan 2015)
 alert(getDateAgo(date3, 2)); // 31, (31 Dec 2014)
-alert(getDateAgo(date3, 365)); // 2, (2 Jan 2014)`);function je(){let t=new Date(2015,0,2);const e=(a,o)=>{const s=new Date(a);return s.setDate(s.getDate()-o),s.getDate()};alert(e(t,1)),alert(e(t,2)),alert(e(t,365))}const Se=u(`// Сколько сегодня прошло секунд?
+alert(getDateAgo(date3, 365)); // 2, (2 Jan 2014)`),H=e(`// Сколько сегодня прошло секунд?
 // важность: 5
 // Напишите функцию getSecondsToday(), возвращающую количество секунд с начала сегодняшнего дня.
 
@@ -566,7 +566,7 @@ const getSecondsToday = () => {
   return hours * 3600 + minutes * 60 + seconds;
 };
 
-console.log(getSecondsToday());`);function De(){console.log((()=>{const e=new Date,a=e.getHours(),o=e.getMinutes(),s=e.getSeconds();return a*3600+o*60+s})())}const we=u(`// Сколько секунд осталось до завтра?
+console.log(getSecondsToday());`),z=e(`// Сколько секунд осталось до завтра?
 // важность: 5
 // Создайте функцию getSecondsToTomorrow(), возвращающую количество секунд до завтрашней даты.
 
@@ -590,7 +590,7 @@ const getSecondsToTomorrow = () => {
   return Math.round(diff / 1000);
 };
 
-console.log(getSecondsToTomorrow());`);function ke(){console.log((()=>{const e=new Date,o=new Date(e.getFullYear(),e.getMonth(),e.getDate()+1,0,0,0,0).getTime()-e.getTime();return Math.round(o/1e3)})())}const Me=u(`// Форматирование относительной даты
+console.log(getSecondsToTomorrow());`),U=e(`// Форматирование относительной даты
 // важность: 4
 // Напишите функцию formatDate(date), форматирующую date по следующему принципу:
 
@@ -629,4 +629,4 @@ alert(formatDate(new Date(new Date().getTime() - 30 * 1000))); // "30 сек. н
 alert(formatDate(new Date(new Date().getTime() - 5 * 60 * 1000))); // "5 мин. назад"
 
 // вчерашняя дата вроде 31.12.2016, 20:00
-alert(formatDate(new Date(new Date().getTime() - 86400 * 1000)));`);function Te(){const t=e=>{const a=new Date,o=a.getTime()-e.getTime(),s=Math.round((a.getTime()-e.getTime())/1e3),g=Math.round(s/60);if(o<1e3)return"прямо сейчас";if(s>1e3&&s<60)return`${s} сек. назад`;if(g<60)return`${g} минут назад`;const d=e.getDate(),m=e.getMonth()+1,xe=e.getFullYear(),Ee=e.getHours(),Ae=e.getMinutes();return`${d}.${m}.${xe} ${Ee}:${Ae}`};alert(t(new Date(new Date().getTime()-1))),alert(t(new Date(new Date().getTime()-30*1e3))),alert(t(new Date(new Date().getTime()-5*60*1e3))),alert(t(new Date(new Date().getTime()-86400*1e3)))}return(t,e)=>($e(),_e("div",{class:Oe(t.$style.container)},[e[8]||(e[8]=j("div",{class:"about"},[j("h1",null,"Chapter 3")],-1)),n(l,{onExecute:D},{default:c(()=>[n(r(i),{code:S.value,highlightjs:"",lang:"javascript",theme:"neon-bunny"},null,8,["code"])]),_:1}),n(l,{description:"Напишите функцию ucFirst(str), возвращающую строку str с заглавным первым символом.",onExecute:e[0]||(e[0]=a=>y("Вася"))},{default:c(()=>[n(r(i),{code:w.value,highlightjs:"",lang:"javascript",theme:"neon-bunny"},null,8,["code"])]),_:1}),n(l,{description:"Напишите функцию checkSpam(str), возвращающую true, если str содержит 'viagra' или 'XXX', а иначе false. Функция должна быть нечувствительна к регистру:",onExecute:e[1]||(e[1]=a=>p("buy ViAgRA now"))},{default:c(()=>[n(r(i),{code:k.value,highlightjs:"",lang:"javascript",theme:"neon-bunny"},null,8,["code"])]),_:1}),n(l,{onExecute:e[2]||(e[2]=a=>h("Вот, что мне хотелось бы сказать на эту тему:",20))},{default:c(()=>[n(r(i),{code:M.value,highlightjs:"",label:"Усечение строки",lang:"javascript",theme:"neon-bunny"},null,8,["code"])]),_:1}),n(l,{onExecute:e[3]||(e[3]=a=>b("$120"))},{default:c(()=>[n(r(i),{code:T.value,highlightjs:"",label:"Получить число из суммы денег",lang:"javascript",theme:"neon-bunny"},null,8,["code"])]),_:1}),n(l,{description:"Скопирован ли массив?",onExecute:E},{default:c(()=>[n(r(i),{code:x.value,highlightjs:"",lang:"javascript",theme:"neon-bunny"},null,8,["code"])]),_:1}),n(l,{description:"Создайте массив styles с элементами «Джаз» и «Блюз». Добавьте «Рок-н-ролл» в конец. Замените значение в середине на «Классика». Ваш код для поиска значения в середине должен работать для массивов с любой длиной. Удалите первый элемент массива и покажите его. Вставьте Рэп и Регги в начало массива. Массив по ходу выполнения операц Джаз, Блюз Джаз, Блюз, Рок-н-ролл Джаз, Классика, Рок-н-ролл Классика, Рок-н-ролл Рэп, Регги, Классика, Рок-н-ролл",onExecute:C},{default:c(()=>[n(r(i),{code:A.value,highlightjs:"",lang:"javascript",theme:"neon-bunny"},null,8,["code"])]),_:1}),n(l,{onExecute:$},{default:c(()=>[n(r(i),{code:_.value,highlightjs:"",lang:"javascript",theme:"neon-bunny"},null,8,["code"])]),_:1}),n(l,{onExecute:e[4]||(e[4]=a=>P([-1,2,3,-9,11]))},{default:c(()=>[n(r(i),{code:O.value,highlightjs:"",lang:"javascript",theme:"neon-bunny"},null,8,["code"])]),_:1}),n(l,{onExecute:e[5]||(e[5]=a=>J("background-color"))},{default:c(()=>[n(r(i),{code:N.value,highlightjs:"",lang:"javascript",theme:"neon-bunny"},null,8,["code"])]),_:1}),n(l,{onExecute:e[6]||(e[6]=a=>I(r(B),1,4))},{default:c(()=>[n(r(i),{code:L.value,highlightjs:"",lang:"javascript",theme:"neon-bunny"},null,8,["code"])]),_:1}),n(l,{onExecute:H},{default:c(()=>[n(r(i),{code:F.value,highlightjs:"",lang:"javascript",theme:"neon-bunny"},null,8,["code"])]),_:1}),n(l,{onExecute:q},{default:c(()=>[n(r(i),{code:R.value,highlightjs:"",lang:"javascript",theme:"neon-bunny"},null,8,["code"])]),_:1}),n(l,{onExecute:U},{default:c(()=>[n(r(i),{code:V.value,highlightjs:"",lang:"javascript",theme:"neon-bunny"},null,8,["code"])]),_:1}),n(l,{onExecute:Y},{default:c(()=>[n(r(i),{code:W.value,highlightjs:"",lang:"javascript",theme:"neon-bunny"},null,8,["code"])]),_:1}),n(l,{onExecute:X},{default:c(()=>[n(r(i),{code:z.value,highlightjs:"",lang:"javascript",theme:"neon-bunny"},null,8,["code"])]),_:1}),n(l,{onExecute:K},{default:c(()=>[n(r(i),{code:G.value,highlightjs:"",lang:"javascript",theme:"neon-bunny"},null,8,["code"])]),_:1}),n(l,{onExecute:Z},{default:c(()=>[n(r(i),{code:Q.value,highlightjs:"",lang:"javascript",theme:"neon-bunny"},null,8,["code"])]),_:1}),n(l,{onExecute:e[7]||(e[7]=a=>v(r(f)))},{default:c(()=>[n(r(i),{code:ee.value,highlightjs:"",lang:"javascript",theme:"neon-bunny"},null,8,["code"])]),_:1}),n(l,{onExecute:ae},{default:c(()=>[n(r(i),{code:te.value,highlightjs:"",lang:"javascript",theme:"neon-bunny"},null,8,["code"])]),_:1}),n(l,{onExecute:oe},{default:c(()=>[n(r(i),{code:ne.value,highlightjs:"",lang:"javascript",theme:"neon-bunny"},null,8,["code"])]),_:1}),n(l,{onExecute:re},{default:c(()=>[n(r(i),{code:se.value,highlightjs:"",lang:"javascript",theme:"neon-bunny"},null,8,["code"])]),_:1}),n(l,{onExecute:ue},{default:c(()=>[n(r(i),{code:le.value,highlightjs:"",lang:"javascript",theme:"neon-bunny"},null,8,["code"])]),_:1}),n(l,{onExecute:ie},{default:c(()=>[n(r(i),{code:ce.value,highlightjs:"",lang:"javascript",theme:"neon-bunny"},null,8,["code"])]),_:1}),n(l,{onExecute:de},{default:c(()=>[n(r(i),{code:ge.value,highlightjs:"",lang:"javascript",theme:"neon-bunny"},null,8,["code"])]),_:1}),n(l,{onExecute:he},{default:c(()=>[n(r(i),{code:me.value,highlightjs:"",lang:"javascript",theme:"neon-bunny"},null,8,["code"])]),_:1}),n(l,{onExecute:ye},{default:c(()=>[n(r(i),{code:fe.value,highlightjs:"",lang:"javascript",theme:"neon-bunny"},null,8,["code"])]),_:1}),n(l,{onExecute:be},{default:c(()=>[n(r(i),{code:pe.value,highlightjs:"",lang:"javascript",theme:"neon-bunny"},null,8,["code"])]),_:1}),n(l,{onExecute:je},{default:c(()=>[n(r(i),{code:ve.value,highlightjs:"",lang:"javascript",theme:"neon-bunny"},null,8,["code"])]),_:1}),n(l,{onExecute:De},{default:c(()=>[n(r(i),{code:Se.value,highlightjs:"",lang:"javascript",theme:"neon-bunny"},null,8,["code"])]),_:1}),n(l,{onExecute:ke},{default:c(()=>[n(r(i),{code:we.value,highlightjs:"",lang:"javascript",theme:"neon-bunny"},null,8,["code"])]),_:1}),n(l,{onExecute:Te},{default:c(()=>[n(r(i),{code:Me.value,highlightjs:"",lang:"javascript",theme:"neon-bunny"},null,8,["code"])]),_:1})],2))}}),Je="_container_1r0h1_2",Le="_about_1r0h1_8",Be={container:Je,about:Le},Ie={$style:Be},qe=Pe(Ne,[["__cssModules",Ie]]);export{qe as default};
+alert(formatDate(new Date(new Date().getTime() - 86400 * 1000)));`),W=[l,d,f,p,h,b,w,D,k,M,v,C,A,T,j,x,_,L,N,B,$,E,I,J,O,F,R,V,q,H,z,U],n=e(l);return(t,a)=>(g(),i("div",{class:ee(t.$style.container)},[a[1]||(a[1]=o("div",{class:"about"},[o("h1",null,"Chapter 3")],-1)),G(o("select",{"onUpdate:modelValue":a[0]||(a[0]=r=>n.value=r)},[(g(),i(X,null,Z(W,(r,s)=>o("option",{key:s,value:r.value},te(`Задача ${s+1}`),9,se)),64))],512),[[Q,n.value]]),K(re,{defaultCode:n.value},null,8,["defaultCode"])],2))}}),ne="_container_1r0h1_2",le="_about_1r0h1_8",ue={container:ne,about:le},ce={$style:ue},me=ae(oe,[["__cssModules",ce]]);export{me as default};

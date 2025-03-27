@@ -1,4 +1,4 @@
-import{C as o}from"./CodeDisplay-BM2OI5dk.js";import{d as g,r as l,a as L,o as b,b as u,e,w as r,n as k,f as y,_ as j}from"./index-D6pjww6V.js";const T=g({__name:"chapter4",setup(R){const a=l(`// Вычислить сумму чисел до данного
+import{d as _,r as e,a as f,o as v,b as s,w as b,e as k,v as g,F as h,f as C,n as y,t as F,_ as R}from"./index-CFvXGzUr.js";import{C as T}from"./CodeRunner-B-7732XL.js";const w=["value"],B=_({__name:"chapter4",setup(E){const i=e(`// Вычислить сумму чисел до данного
 // важность: 5
 // Напишите функцию sumTo(n), которая вычисляет сумму чисел 1 + 2 + ... + n.
 
@@ -9,7 +9,7 @@ function sumTo(n) {
   return n + sumTo(n - 1);
 }
 
-alert(sumTo(4));`);function c(){function t(n){return n===1?1:n+t(n-1)}alert(t(4))}const f=l(`// Вычислить факториал
+alert(sumTo(4));`),p=e(`// Вычислить факториал
 // важность: 4
 // Факториал натурального числа – это число, умноженное на "себя минус один", затем на "себя минус два", и так далее до 1. Факториал n обозначается как n!
 
@@ -24,7 +24,7 @@ function factorial(n: number) {
   return n * factorial(n - 1);
 }
 
-alert(factorial(5));`);function v(){function t(n){return n===1?1:n*t(n-1)}alert(t(5))}const p=l(`// Числа Фибоначчи
+alert(factorial(5));`),d=e(`// Числа Фибоначчи
 // важность: 5
 // Последовательность чисел Фибоначчи определяется формулой Fn = Fn-1 + Fn-2. То есть, следующее число получается как сумма двух предыдущих.
 
@@ -41,7 +41,7 @@ function fib(n: number) {
   return fib(n - 1) + fib(n - 2);
 }
 
-alert(fib(5));`);function h(){function t(n){return n<=1?n:t(n-1)+t(n-2)}alert(t(5))}const d=l(`// Вывод односвязного списка
+alert(fib(5));`),x=e(`// Вывод односвязного списка
 // важность: 5
 // Допустим, у нас есть односвязный список (как описано в главе Рекурсия и стек):
 
@@ -73,7 +73,7 @@ function printList(list) {
     printList(list.next);
   }
 }
-printList(list);`);let i={value:1,next:{value:2,next:{value:3,next:{value:4,next:null}}}};function x(){function t(n){console.log(n.value),n.next&&t(n.next)}t(i)}const m=l(`// Вывод односвязного списка в обратном порядке
+printList(list);`);let o={value:1,next:{value:2,next:{value:3,next:{value:4,next:null}}}};function a(t){console.log(t.value),t.next&&a(t.next)}a(o);const L=e(`// Вывод односвязного списка в обратном порядке
 // важность: 5
 // Выведите односвязный список из предыдущего задания Вывод односвязного списка в обратном порядке.
 
@@ -94,4 +94,4 @@ function printListReverse(list) {
   console.log(list.value);
 }
 
-printListReverse(list)`);function _(){function t(n){n.next&&t(n.next),console.log(n.value)}t(i)}return(t,n)=>{const s=y("VCodeBlock");return b(),L("div",{class:k(t.$style.container)},[n[0]||(n[0]=u("div",{class:"about"},[u("h1",null,"Chapter 4")],-1)),e(o,{onExecute:c},{default:r(()=>[e(s,{code:a.value,highlightjs:"",lang:"javascript",theme:"neon-bunny"},null,8,["code"])]),_:1}),e(o,{onExecute:v},{default:r(()=>[e(s,{code:f.value,highlightjs:"",lang:"javascript",theme:"neon-bunny"},null,8,["code"])]),_:1}),e(o,{onExecute:h},{default:r(()=>[e(s,{code:p.value,highlightjs:"",lang:"javascript",theme:"neon-bunny"},null,8,["code"])]),_:1}),e(o,{onExecute:x},{default:r(()=>[e(s,{code:d.value,highlightjs:"",lang:"javascript",theme:"neon-bunny"},null,8,["code"])]),_:1}),e(o,{onExecute:_},{default:r(()=>[e(s,{code:m.value,highlightjs:"",lang:"javascript",theme:"neon-bunny"},null,8,["code"])]),_:1})],2)}}}),C="_container_5n7yf_3",E="_about_5n7yf_15",B={container:C,about:E},w={$style:B},M=j(T,[["__cssModules",w]]);export{M as default};
+printListReverse(list)`);function u(t){t.next&&u(t.next)}u(o);const m=[i,p,d,x,L],l=e(i);return(t,n)=>(v(),f("div",{class:y(t.$style.container)},[n[1]||(n[1]=s("div",{class:"about"},[s("h1",null,"Chapter 3")],-1)),b(s("select",{"onUpdate:modelValue":n[0]||(n[0]=r=>l.value=r)},[(v(),f(h,null,C(m,(r,c)=>s("option",{key:c,value:r.value},F(`Задача ${c+1}`),9,w)),64))],512),[[g,l.value]]),k(T,{defaultCode:l.value},null,8,["defaultCode"])],2))}}),M="_container_1ill7_2",V="_about_1ill7_8",$={container:M,about:V},D={$style:$},z=R(B,[["__cssModules",D]]);export{z as default};
