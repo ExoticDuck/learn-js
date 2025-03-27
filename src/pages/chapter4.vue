@@ -221,7 +221,7 @@ alert(fib(5));`);
 // Напишите функцию fib(n) которая возвращает n-е число Фибоначчи.
 
 function runTask2() {
-  function fib(n: number) {
+  function fib(n: number): number {
     if (n <= 1) {
       return n;
     }
@@ -286,7 +286,7 @@ let list = {
 
 // Сделайте два варианта решения: используя цикл и через рекурсию.
 function runTask3() {
-  function printList(list) {
+  function printList(list: ListType) {
     // let currentList = list;
     // while (currentList) {
     //   console.log(currentList.value);
@@ -328,8 +328,12 @@ printListReverse(list)`);
 // Выведите односвязный список из предыдущего задания Вывод односвязного списка в обратном порядке.
 
 // Сделайте два решения: с использованием цикла и через рекурсию.
+type ListType = {
+  value: number;
+  next: ListType | null;
+};
 function runTask4() {
-  function printListReverse(list) {
+  function printListReverse(list: ListType) {
     // const res = [];
     // let currentList = list;
     // while (currentList) {

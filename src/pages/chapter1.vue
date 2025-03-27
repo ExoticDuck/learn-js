@@ -308,10 +308,9 @@
   </div>
 </template>
 
-<script lang="ts" setup>
-import CodeDisplay from "@/components/CodeDisplay/CodeDisplay.vue";
-
+<script lang="ts">
 import { ref } from "vue";
+import CodeDisplay from "../components/CodeDisplay/CodeDisplay.vue";
 
 // alert("Я JavaScript!");
 const task0 = ref(`
@@ -516,8 +515,8 @@ alert(+a1 + +b1); // 12`);
 
 // В чём ошибка? Исправьте её. Результат должен быть 3.
 function runTask7() {
-  let a1 = prompt("Первое число?", "1");
-  let b1 = prompt("Второе число?", "2");
+  let a1 = +(prompt("Первое число?", "1") || 0);
+  let b1 = +(prompt("Второе число?", "2") || 0);
 
   alert(+a1 + +b1); // 12
 }
@@ -619,7 +618,7 @@ if (number > 0) {
 // -1, если значение меньше нуля,
 // 0, если значение равно нулю.
 function runTask11() {
-  let number = +prompt("Введите число");
+  let number = +(prompt("Введите число") || 0);
 
   if (number > 0) {
     alert(1);
@@ -649,15 +648,18 @@ result = a + b > 4 ? "Мало" : "Много";`);
 // Перепишите конструкцию if с использованием условного оператора '?':
 function runTask12() {
   let result;
-  let a = +prompt("Ведите а");
-  let b = +prompt("Ведите b");
-  if (a + b < 4) {
+  let a = prompt("Ведите а");
+  let b = prompt("Ведите b");
+  const numberValue1 = a !== null ? +a : NaN;
+  const numberValue2 = b !== null ? +b : NaN;
+
+  if (numberValue1 + numberValue2 < 4) {
     result = "Мало";
   } else {
     result = "Много";
   }
 
-  result = a + b > 4 ? "Мало" : "Много";
+  result = numberValue1 + numberValue2 > 4 ? "Мало" : "Много";
 }
 const task13 = ref(`//* Перепишите 'if..else' в '?'
 // важность: 5
@@ -709,10 +711,10 @@ function runTask13() {
     login == "Сотрудник"
       ? "Привет"
       : login == "Директор"
-      ? "Здравствуйте"
-      : login == ""
-      ? "Нет логина"
-      : "";
+        ? "Здравствуйте"
+        : login == ""
+          ? "Нет логина"
+          : "";
   console.log(message);
 }
 
@@ -780,17 +782,18 @@ if (age >= 14 && age <= 90) {
 
 // «Включительно» означает, что значение переменной age может быть равно 14 или 90.
 function runTask14() {
-  let age = +prompt("Сколько вам лет");
+  let age = prompt("Сколько вам лет");
+  const numberValue = age !== null ? +age : NaN;
 
-  if (age >= 14 && age <= 90) {
+  if (numberValue >= 14 && numberValue <= 90) {
     alert("Вам от 14 до 90 лет");
   }
 
-  if (age < 14 || age > 90) {
+  if (numberValue < 14 || numberValue > 90) {
     alert("Вам до 14 или от 90 лет");
   }
 
-  if (!(age >= 14 && age <= 90)) {
+  if (!(numberValue >= 14 && numberValue <= 90)) {
     alert("Вам до 14 или от 90 лет");
   }
 }
@@ -1076,7 +1079,9 @@ function runTask22() {
   let num = 0;
 
   while (num < 100) {
-    num = +prompt("ввести число, большее 100");
+    let promptValue = prompt("ввести число, большее 100");
+    const num = promptValue !== null ? +promptValue : NaN;
+
     if (num === null) {
       break;
     }
@@ -1237,8 +1242,8 @@ switch (number) {
 // важность: 4
 // Перепишите код с использованием одной конструкции switch:
 function runTask25() {
-  const number = +prompt("Введите число между 0 и 3", "");
-
+  const number = prompt("Введите число между 0 и 3", "");
+  const numberValue = number !== null ? +number : NaN;
   // if (number === 0) {
   //   alert('Вы ввели число 0');
   // }
@@ -1251,7 +1256,7 @@ function runTask25() {
   //   alert('Вы ввели число 2, а может и 3');
   // }
 
-  switch (number) {
+  switch (numberValue) {
     case 0:
       console.log("Вы ввели число 0");
       break;
@@ -1302,7 +1307,7 @@ console.log(checkAge(22));`);
 // }
 
 function runTask26() {
-  function checkAge(age) {
+  function checkAge(age: number) {
     return age > 18 || confirm("Родители разрешили?");
   }
 
@@ -1333,7 +1338,7 @@ function min(a, b) {
 // min(3, -1) == -1
 // min(1, 1) == 1
 function runTask27() {
-  function min(a, b) {
+  function min(a: number, b: number) {
     return a < b ? a : b;
   }
 
@@ -1368,7 +1373,7 @@ console.log(pow(3, 4));`);
 // pow(1, 100) = 1 * 1 * ...* 1 = 1
 
 function runTask28() {
-  function pow(a, b) {
+  function pow(a: number, b: number) {
     let res = a;
     let base = b;
     while (base > 1) {
@@ -1425,7 +1430,7 @@ ask(
 //   function() { alert("Вы отменили выполнение."); }
 // );
 function runTask29() {
-  const ask = (question, yes, no) => {
+  const ask = (question: string, yes: () => void, no: () => void) => {
     if (confirm(question)) yes();
     else no();
   };
