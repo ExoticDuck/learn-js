@@ -22,6 +22,7 @@ export default defineConfig({
   resolve: {
     extensions: [".ts", ".tsx", ".vue", ".js", ".json"],
     alias: {
+      //@ts-ignore
       "@": fileURLToPath(new URL("./src", import.meta.url)),
     },
   },
