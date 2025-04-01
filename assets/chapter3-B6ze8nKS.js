@@ -1,4 +1,4 @@
-import{d as Y,r as e,a as i,o as g,b as o,w as G,e as K,v as Q,F as X,f as Z,n as ee,t as te,_ as ae}from"./index-B32JyW5U.js";import{C as re}from"./CodeRunner-pVzyUU8Z.js";const se=["value"],oe=Y({__name:"chapter3",setup(ie){const l=e(`// Сумма пользовательских чисел
+import{d as Y,r as e,a as i,o as g,b as o,w as G,e as K,v as Q,F as X,f as Z,n as ee,t as te,_ as ae}from"./index-BNupfkuc.js";import{C as re}from"./CodeRunner-DVTuWWyn.js";const se=["value"],oe=Y({__name:"chapter3",setup(ie){const l=e(`// Сумма пользовательских чисел
 // важность: 5
 // Создайте скрипт, который запрашивает ввод двух чисел (используйте prompt) и после показывает их сумму.
 

@@ -1,4 +1,4 @@
-import{d as w,r as e,a as l,o as u,b as s,w as v,e as _,v as j,F as S,f as C,n as V,t as E,_ as M}from"./index-B32JyW5U.js";import{C as N}from"./CodeRunner-pVzyUU8Z.js";const U=["value"],A=w({__name:"chapter2",setup(x){const r=e(`//* Привет, object
+import{d as w,r as e,a as l,o as u,b as s,w as v,e as _,v as j,F as S,f as C,n as V,t as E,_ as M}from"./index-BNupfkuc.js";import{C as N}from"./CodeRunner-DVTuWWyn.js";const U=["value"],A=w({__name:"chapter2",setup(x){const r=e(`//* Привет, object
 // важность: 5
 // Напишите код, выполнив задание из каждого пункта отдельной строкой:
 

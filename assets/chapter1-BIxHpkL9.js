@@ -1,4 +1,4 @@
-import{d as P,r as e,a as r,o as i,b as s,w as V,e as Y,v as R,F as T,f as W,n as z,t as H,_ as L}from"./index-B32JyW5U.js";import{C as G}from"./CodeRunner-pVzyUU8Z.js";const K=["value"],Q=P({__name:"chapter1",setup(se){const a=e(`
+import{d as P,r as e,a as r,o as i,b as s,w as V,e as Y,v as R,F as T,f as W,n as z,t as H,_ as L}from"./index-BNupfkuc.js";import{C as G}from"./CodeRunner-DVTuWWyn.js";const K=["value"],Q=P({__name:"chapter1",setup(se){const a=e(`
 // *Работа с переменными
 // важность: 2
 // Объявите две переменные: admin и name.
