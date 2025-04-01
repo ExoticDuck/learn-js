@@ -22,6 +22,7 @@
 <script setup lang="ts">
 import { ref, toRefs, watch } from "vue";
 import { VueMonacoEditor } from "@guolao/vue-monaco-editor";
+import * as ts from "typescript";
 
 const props = defineProps<{
   defaultCode: string;
@@ -44,7 +45,9 @@ const runCode = () => {
       log: (...args: string[]) => consoleMessages.push(args.join(" ")),
     };
 
-    new Function("console", code.value)(customConsole);
+    const jsCode = ts.transpile(code.value);
+
+    new Function("console", jsCode)(customConsole);
 
     output.value = consoleMessages.join("\n") || "Код выполнен без вывода.";
   } catch (error: any) {
