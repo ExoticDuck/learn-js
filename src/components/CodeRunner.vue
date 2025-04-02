@@ -2,7 +2,7 @@
   <div :class="$style.code_runner">
     <VueMonacoEditor
       :value="code"
-      :defaultValue="defaultCode"
+      :defaultValue="initialCode"
       height="300px"
       language="typescript"
       theme="vs-dark"
@@ -20,15 +20,13 @@
 </template>
 
 <script setup lang="ts">
-import { ref, toRefs, watch } from "vue";
+import { ref, watch } from "vue";
 import { VueMonacoEditor } from "@guolao/vue-monaco-editor";
 import * as ts from "typescript";
 
 const props = defineProps<{
-  defaultCode: string;
+  initialCode: string;
 }>();
-
-const { defaultCode } = toRefs(props);
 
 const code = ref(``);
 const output = ref("");
@@ -47,10 +45,12 @@ const runCode = () => {
 
     const jsCode = ts.transpile(code.value);
 
+    //todo: выяснить как работаетяы
     new Function("console", jsCode)(customConsole);
-
+    //todo: fix bug
     output.value = consoleMessages.join("\n") || "Код выполнен без вывода.";
   } catch (error: any) {
+    //todo: change output styles
     output.value = `Ошибка: ${error.message}`;
   }
 };
@@ -59,8 +59,8 @@ const handleEditorChange = (newCode: string) => {
   code.value = newCode;
 };
 
-watch(defaultCode, () => {
-  code.value = defaultCode.value;
+watch(() => props.initialCode, () => {
+  code.value = initialCode.value;
 });
 </script>
 
