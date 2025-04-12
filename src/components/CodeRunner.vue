@@ -3,6 +3,7 @@
     <VueMonacoEditor
       :value="code"
       :defaultValue="initialCode"
+      :class="$style.editor"
       height="300px"
       language="typescript"
       theme="vs-dark"
@@ -10,58 +11,68 @@
       @change="handleEditorChange"
     />
 
-    <button @click="runCode" :class="$style.run_btn">Запустить код</button>
+    <button
+      type="button"
+      :class="$style.run_btn"
+      @click="runCode"
+    >
+      Запустить код
+    </button>
 
     <div :class="$style.output">
       <h3>Вывод:</h3>
-      <pre>{{ output }}</pre>
+      <pre :class="{ [$style.error]: output.isError }">{{ output.message }}</pre>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, watch } from "vue";
-import { VueMonacoEditor } from "@guolao/vue-monaco-editor";
-import * as ts from "typescript";
+import { ref, watch } from 'vue'
+import { VueMonacoEditor } from '@guolao/vue-monaco-editor'
+import * as ts from 'typescript'
 
 const props = defineProps<{
-  initialCode: string;
-}>();
+  initialCode: string
+}>()
 
-const code = ref(``);
-const output = ref("");
+const code = ref(props.initialCode)
+const output = ref({ isError: false, message: '' })
 
 const editorOptions = {
   selectOnLineNumbers: true,
-  scrollBeyondLastLine: false,
-};
+  scrollBeyondLastLine: false
+}
 
 const runCode = () => {
   try {
-    const consoleMessages: string[] = [];
+    const consoleMessages: string[] = []
     const customConsole = {
-      log: (...args: string[]) => consoleMessages.push(args.join(" ")),
-    };
+      log: (...args: string[]) => consoleMessages.push(args.join(' '))
+    }
 
-    const jsCode = ts.transpile(code.value);
+    const jsCode = ts.transpile(code.value)
 
-    //todo: выяснить как работаетяы
-    new Function("console", jsCode)(customConsole);
-    //todo: fix bug
-    output.value = consoleMessages.join("\n") || "Код выполнен без вывода.";
+    new Function('console', jsCode)(customConsole)
+
+    output.value = {
+      message: consoleMessages.join('\n') || 'Код выполнен без вывода.',
+      isError: false
+    }
   } catch (error: any) {
-    //todo: change output styles
-    output.value = `Ошибка: ${error.message}`;
+    output.value = { message: `Ошибка: ${error.message}`, isError: true }
   }
-};
+}
 
 const handleEditorChange = (newCode: string) => {
-  code.value = newCode;
-};
+  code.value = newCode
+}
 
-watch(() => props.initialCode, () => {
-  code.value = initialCode.value;
-});
+watch(
+  () => props.initialCode,
+  () => {
+    code.value = props.initialCode
+  }
+)
 </script>
 
 <style module>
@@ -70,9 +81,12 @@ watch(() => props.initialCode, () => {
   background-color: #2e2e2e;
   color: white;
   border-radius: 8px;
-  width: calc(100vw / 2);
-  /* max-width: 800px; */
-  margin: auto;
+  width: 100%;
+  height: 80%;
+}
+
+.editor {
+  min-height: 80%;
 }
 
 .run_btn {
@@ -99,5 +113,9 @@ watch(() => props.initialCode, () => {
 
 pre {
   color: #32cd32;
+}
+
+.error {
+  color: rgb(252, 42, 42);
 }
 </style>

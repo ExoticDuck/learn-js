@@ -1,24 +1,12 @@
-<script setup>
-import { RouterLink, RouterView } from "vue-router";
-</script>
-
 <template>
   <header>
-    <img
-      alt="Vue logo"
-      class="logo"
-      src="@/assets/logo.svg"
-      width="125"
-      height="125"
-    />
-
     <div class="wrapper">
       <nav>
         <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/chapter1">Chapter 1</RouterLink>
-        <RouterLink to="/chapter2">Chapter 2</RouterLink>
-        <RouterLink to="/chapter3">Chapter 3</RouterLink>
-        <RouterLink to="/chapter4">Chapter 4</RouterLink>
+        <RouterLink to="/chapter/1"> Chapter 1 </RouterLink>
+        <RouterLink to="/chapter/2">Chapter 2</RouterLink>
+        <RouterLink to="/chapter/3">Chapter 3</RouterLink>
+        <RouterLink to="/chapter/4">Chapter 4</RouterLink>
       </nav>
     </div>
   </header>
@@ -26,10 +14,14 @@ import { RouterLink, RouterView } from "vue-router";
   <RouterView />
 </template>
 
+<script lang="ts" setup>
+import { RouterLink, RouterView } from 'vue-router'
+</script>
+
 <style scoped>
 header {
   line-height: 1.5;
-  max-height: 100vh;
+  height: 100vh;
 }
 
 .logo {
@@ -68,12 +60,7 @@ nav a:first-of-type {
 @media (min-width: 1024px) {
   header {
     display: flex;
-    place-items: center;
     padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
   }
 
   header .wrapper {
