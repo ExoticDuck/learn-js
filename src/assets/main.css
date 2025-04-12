@@ -21,6 +21,18 @@ a,
   }
 }
 
+@media (max-width: 1023px) {
+  body {
+    display: flex;
+    place-items: center;
+  }
+
+  #app {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
 @media (min-width: 1024px) {
   body {
     display: flex;

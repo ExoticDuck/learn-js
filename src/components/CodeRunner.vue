@@ -118,4 +118,13 @@ pre {
 .error {
   color: rgb(252, 42, 42);
 }
+
+@media (max-width: 1023px) {
+  .code_runner {
+    height: 80%;
+  }
+  .editor {
+    min-height: 100%;
+  }
+}
 </style>

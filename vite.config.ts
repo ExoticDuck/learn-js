@@ -3,7 +3,6 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueDevTools from 'vite-plugin-vue-devtools'
 import VueRouter from 'unplugin-vue-router/vite'
-import typescript from '@rollup/plugin-typescript'
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -13,10 +12,7 @@ export default defineConfig({
       /* options */
     }),
     vue(),
-    vueDevTools(),
-    typescript({
-      tsconfig: './tsconfig.json'
-    })
+    vueDevTools()
   ],
   resolve: {
     extensions: ['.ts', '.tsx', '.vue', '.js', '.json'],
