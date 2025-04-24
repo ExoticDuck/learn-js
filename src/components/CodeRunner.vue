@@ -2,7 +2,7 @@
   <div :class="$style.code_runner">
     <VueMonacoEditor
       :value="code"
-      :defaultValue="initialCode"
+      :defaultValue="selectedTask"
       :class="$style.editor"
       height="300px"
       language="typescript"
@@ -27,15 +27,18 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch } from 'vue'
+import { computed, ref, watch } from 'vue'
 import { VueMonacoEditor } from '@guolao/vue-monaco-editor'
 import * as ts from 'typescript'
+import { useTasksStore } from '@/store/tasks'
 
-const props = defineProps<{
-  initialCode: string
-}>()
+const tasks = useTasksStore()
 
-const code = ref(props.initialCode)
+const selectedTask = computed(() => {
+  return tasks.getTask(tasks.chapterId, tasks.taskId)?.task || ''
+})
+
+const code = ref(selectedTask.value)
 const output = ref({ isError: false, message: '' })
 
 const editorOptions = {
@@ -58,8 +61,8 @@ const runCode = () => {
       message: consoleMessages.join('\n') || 'Код выполнен без вывода.',
       isError: false
     }
-  } catch (error: any) {
-    output.value = { message: `Ошибка: ${error.message}`, isError: true }
+  } catch (error: unknown) {
+    output.value = { message: `Ошибка: ${(error as { message: string }).message}`, isError: true }
   }
 }
 
@@ -68,9 +71,9 @@ const handleEditorChange = (newCode: string) => {
 }
 
 watch(
-  () => props.initialCode,
+  () => selectedTask.value,
   () => {
-    code.value = props.initialCode
+    code.value = selectedTask.value
   }
 )
 </script>
@@ -80,13 +83,12 @@ watch(
   padding: 20px;
   background-color: #2e2e2e;
   color: white;
-  border-radius: 8px;
+  border-radius: 4px;
   width: 100%;
-  height: 80%;
 }
 
 .editor {
-  min-height: 80%;
+  min-height: 50vh;
 }
 
 .run_btn {
@@ -95,7 +97,7 @@ watch(
   background-color: #007bff;
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 4px;
   cursor: pointer;
 }
 
@@ -107,8 +109,7 @@ watch(
   margin-top: 20px;
   padding: 10px;
   background-color: #333;
-  border-radius: 5px;
-  min-height: 50px;
+  border-radius: 4px;
 }
 
 pre {
@@ -121,10 +122,8 @@ pre {
 
 @media (max-width: 1023px) {
   .code_runner {
-    height: 80%;
   }
   .editor {
-    min-height: 100%;
   }
 }
 </style>

@@ -8,12 +8,14 @@ import {
 } from './defaultTasks'
 
 type TasksStore = {
-  [id: number]: TaskType[]
+  [id: string]: TaskType[]
 }
 
 export const useTasksStore = defineStore('tasks', {
   state: (): {
     tasks: TasksStore
+    chapterId: string
+    taskId: string
   } => {
     return {
       tasks: {
@@ -21,17 +23,29 @@ export const useTasksStore = defineStore('tasks', {
         2: [...secondChapterTasks],
         3: [...thirdChapterTasks],
         4: [...fourthChapterTasks]
-      }
+      },
+      taskId: '1',
+      chapterId: '1'
     }
   },
 
   getters: {
     getTask: state => {
-      return (chapterId: number, taskId: number) =>
+      return (chapterId: string, taskId: string) =>
         state.tasks[chapterId].find(task => task.id === taskId)
     },
     getTasksIdsFromChapter: state => {
-      return (chapterId: number) => state.tasks[chapterId].map(task => task.id)
+      return (chapterId: string) => state.tasks[chapterId].map(task => task.id)
+    },
+    getSelectedTaskId: state => state.taskId,
+    getSelectedChapterId: state => state.chapterId
+  },
+  actions: {
+    setChapterId(id: string) {
+      this.chapterId = id
+    },
+    setTaskId(id: string) {
+      this.taskId = id
     }
   }
 })

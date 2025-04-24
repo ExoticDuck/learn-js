@@ -104,6 +104,10 @@ export default ts.config(
         }
       ],
       'vue/define-props-declaration': 'error',
+      'vue/no-deprecated-props-default-this': 'error',
+      'vue/require-valid-default-prop': 'error',
+      'vue/valid-define-props': 'error',
+      'vue/no-required-prop-with-default': 'error',
       'vue/html-button-has-type': [
         'error',
         {
