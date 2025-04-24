@@ -22,8 +22,6 @@ import { useTasksStore } from '@/store/tasks'
 import { computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
-defineProps<{ foo: number }>()
-
 const tasks = useTasksStore()
 const route = useRoute()
 const { currentRoute, replace } = useRouter()
