@@ -10,4 +10,6 @@ if (import.meta.hot) {
   handleHotUpdate(router)
 }
 
+console.log(import.meta.env)
+
 export default router

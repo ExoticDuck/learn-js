@@ -6,8 +6,10 @@
 </template>
 
 <script lang="ts" setup>
-import CodeRunner from '@/components/CodeRunner.vue'
-import TasksSelect from '@/components/TasksSelect.vue'
+import { defineAsyncComponent } from 'vue'
+
+const TasksSelect = defineAsyncComponent(() => import('@/components/TasksSelect.vue'))
+const CodeRunner = defineAsyncComponent(() => import('@/components/CodeRunner.vue'))
 </script>
 
 <style module>

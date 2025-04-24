@@ -27,11 +27,11 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref, watch } from 'vue'
-import { VueMonacoEditor } from '@guolao/vue-monaco-editor'
+import { computed, defineAsyncComponent, ref, watch } from 'vue'
+// import { VueMonacoEditor } from '@guolao/vue-monaco-editor'
 import * as ts from 'typescript'
 import { useTasksStore } from '@/store/tasks'
-
+const VueMonacoEditor = defineAsyncComponent(() => import('@guolao/vue-monaco-editor'))
 const tasks = useTasksStore()
 
 const selectedTask = computed(() => {

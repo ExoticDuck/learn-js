@@ -6,7 +6,7 @@ import VueRouter from 'unplugin-vue-router/vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: process.env.NODE_ENV === 'production' ? '/learn-js/' : '/',
+  base: process.env.BASE_URL || '/learn-js/',
   plugins: [
     VueRouter({
       /* options */
@@ -19,5 +19,8 @@ export default defineConfig({
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
+  },
+  optimizeDeps: {
+    exclude: ['@guolao/vue-monaco-editor']
   }
 })
