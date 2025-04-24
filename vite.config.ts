@@ -9,7 +9,7 @@ export default defineConfig({
   base: process.env.BASE_URL || '/learn-js/',
   plugins: [
     VueRouter({
-      /* options */
+      importMode: 'sync'
     }),
     vue(),
     vueDevTools()
