@@ -1,4 +1,4 @@
-import{l as n}from"./index-B8y092Qo.js";const s=[{id:"1",task:`
+import{l as n}from"./index-CYLsST-s.js";const s=[{id:"1",task:`
 // *Работа с переменными
 // важность: 2
 // Объявите две переменные: admin и name.
