@@ -1967,5 +1967,632 @@ army[2](); // 10 ...и т.д.
 // Почему у всех стрелков одинаковые номера?
 
 // Почините код, чтобы он работал как задумано.`
+  },
+  {
+    id: '15',
+    task: `
+    // Сумма с произвольным количеством скобок
+    // важность: 2
+// Напишите функцию sum, которая бы работала следующим образом:
+
+// sum(1)(2) == 3; // 1 + 2
+// sum(1)(2)(3) == 6; // 1 + 2 + 3
+// sum(5)(-1)(2) == 6
+// sum(6)(-1)(-2)(-3) == 0
+// sum(0)(1)(2)(3)(4)(5) == 15
+
+function sum(a) {
+  let currentSum = a;
+
+  function f(b) {
+    currentSum += b;
+    return f;
+  }
+
+  f.toString = function() {
+    return currentSum;
+  };
+
+  return f;
+}
+
+alert( sum(2)(2)(2)(3) ); //9
+`
+  },
+  {
+    id: '16',
+    task: `
+//     Вывод каждую секунду
+// важность: 5
+// Напишите функцию printNumbers(from, to), которая выводит число каждую секунду, начиная от from и заканчивая to.
+
+// Сделайте два варианта решения.
+
+// Используя setInterval.
+// Используя рекурсивный setTimeout.
+
+function printNumbers(from: number, to: number) {
+  let num = from
+  const timer = setInterval(() => {
+    console.log(num)
+    if (num === to) {
+      clearInterval(timer)
+    }
+    num++
+  }, 1000)
+
+  // setTimeout(function go() {
+  //   console.log(num)
+  //   if (num < to) {
+  //     setTimeout(go, 1000)
+  //   }
+  //   num++
+  // }, 1000)
+}
+
+printNumbers(1, 5)
+`
+  },
+  {
+    id: '17',
+    task: `
+Что покажет setTimeout?
+важность: 5
+В приведённом ниже коде запланирован вызов setTimeout, а затем выполняется сложное вычисление, для завершения которого требуется более 100 мс.
+
+Когда будет выполнена запланированная функция?
+
+После цикла.
+Перед циклом.
+В начале цикла.
+Что покажет alert?
+
+let i = 0;
+
+setTimeout(() => alert(i), 100); // ?
+
+// предположим, что время выполнения этой функции >100 мс
+for(let j = 0; j < 100000000; j++) {
+  i++;
+}
+
+//timeout выполнится после цикла
+`
+  },
+  {
+    id: '18',
+    task: `
+Что покажет setTimeout?
+важность: 5
+В приведённом ниже коде запланирован вызов setTimeout, а затем выполняется сложное вычисление, для завершения которого требуется более 100 мс.
+
+Когда будет выполнена запланированная функция?
+
+После цикла.
+Перед циклом.
+В начале цикла.
+Что покажет alert?
+
+let i = 0;
+
+setTimeout(() => alert(i), 100); // ?
+
+// предположим, что время выполнения этой функции >100 мс
+for(let j = 0; j < 100000000; j++) {
+  i++;
+}
+
+//timeout выполнится после цикла
+`
+  }
+]
+
+export const fifthChapterTasks: TaskType[] = [
+  {
+    id: '1',
+    task: `
+//     Работа с прототипами
+// важность: 5
+// В приведённом ниже коде создаются и изменяются два объекта.
+
+// Какие значения показываются в процессе выполнения кода?
+
+let animal = {
+  jumps: null
+};
+
+let rabbit = {
+  __proto__: animal,
+  jumps: true
+};
+
+alert( rabbit.jumps ); // true
+
+delete rabbit.jumps;
+
+alert( rabbit.jumps ); // null
+
+delete animal.jumps;
+
+alert( rabbit.jumps ); //undefined
+    `
+  },
+  {
+    id: '2',
+    task: `
+//    Алгоритм поиска
+// важность: 5
+// Задача состоит из двух частей.
+
+// У нас есть объекты:
+
+let head = {
+  glasses: 1
+};
+
+let table = {
+ __proto__: head
+  pen: 3
+};
+
+let bed = {
+ __proto__: table
+  sheet: 1,
+  pillow: 2
+};
+
+let pockets = {
+ __proto__: bed
+  money: 2000
+};
+
+console.log( pockets.pen ); // 3
+console.log( bed.glasses ); // 1
+console.log( table.money ); // undefined
+
+//С помощью свойства __proto__ задайте прототипы так, чтобы поиск любого свойства выполнялся по 
+// следующему пути: pockets → bed → table → head. Например, pockets.pen должно возвращать значение 3 
+// (найденное в table), а bed.glasses – значение 1 (найденное в head).
+//Ответьте на вопрос: как быстрее получить значение glasses – через pockets.glasses или через head.glasses?
+// При необходимости составьте цепочки поиска и сравните их.
+    `
+  },
+  {
+    id: '3',
+    task: `
+// Куда будет произведена запись?
+// важность: 5
+// Объект rabbit наследует от объекта animal.
+
+// Какой объект получит свойство full при вызове rabbit.eat(): animal или rabbit?
+
+let animal = {
+  eat() {
+    this.full = true;
+  }
+};
+
+let rabbit = {
+  __proto__: animal
+};
+
+rabbit.eat(); // rabbit, тк this ссылается на объект rabbit
+    `
+  },
+  {
+    id: '4',
+    task: `
+// Почему наедаются оба хомяка?
+// важность: 5
+// У нас есть два хомяка: шустрый (speedy) и ленивый (lazy); оба наследуют от общего объекта hamster.
+
+// Когда мы кормим одного хомяка, второй тоже наедается. Почему? Как это исправить?
+
+let hamster = {
+  stomach: [],
+
+  eat(food) {
+    this.stomach.push(food);
+  }
+};
+
+let speedy = {
+  __proto__: hamster
+  stomach: []
+};
+
+let lazy = {
+  __proto__: hamster
+  stomach: []
+};
+
+// Этот хомяк нашёл еду
+speedy.eat("apple");
+alert( speedy.stomach ); // apple
+
+// У этого хомяка тоже есть еда. Почему? Исправьте
+//Ошибка была в том, что оба хомяка имеют один желудок. Так как у обоих в прототипе один и тот же массив.
+alert( lazy.stomach ); // apple
+    `
+  },
+  {
+    id: '5',
+    task: `
+// Добавить функциям метод "f.defer(ms)"
+// важность: 5
+// Добавьте всем функциям в прототип метод defer(ms), который вызывает функции через ms миллисекунд.
+
+// После этого должен работать такой код:
+
+Function.prototype.defer = function(delay) {
+  setTimeout(this, delay);
+};
+
+function f() {
+  alert("Hello!");
+}
+
+f.defer(1000); // выведет "Hello!" через 1 секунду
+    `
+  },
+  {
+    id: '6',
+    task: `
+// Добавьте функциям декорирующий метод "defer()"
+// важность: 4
+// Добавьте всем функциям в прототип метод defer(ms), который возвращает обёртку, откладывающую вызов функции на ms миллисекунд.
+
+// Например, должно работать так:
+
+Function.prototype.defer = function(delay) {
+  let func = this;
+  return function(...args) {
+    setTimeout(() => func.apply(this, args), delay);
+  }
+};
+
+
+function f(a, b) {
+  alert( a + b );
+}
+
+f.defer(1000)(1, 2); // выведет 3 через 1 секунду.
+    `
+  },
+  {
+    id: '7',
+    task: `
+// Добавьте toString в словарь
+// важность: 5
+// Имеется объект dictionary, созданный с помощью Object.create(null) для хранения любых пар ключ/значение.
+
+// Добавьте ему метод dictionary.toString(), который должен возвращать список ключей, разделённых запятой. Ваш toString не должен выводиться при итерации объекта с помощью цикла for..in.
+
+// Вот так это должно работать:
+
+let dictionary = Object.create(null, {
+  toString: { 
+    value() {
+      return Object.keys(this).join(', ');
+    }
+  }
+});
+
+// ваш код, который добавляет метод dictionary.toString
+
+// добавляем немного данных
+dictionary.apple = "Apple";
+dictionary.__proto__ = "test"; // здесь __proto__ -- это обычный ключ
+
+// только apple и __proto__ выведены в цикле
+for(let key in dictionary) {
+  alert(key); // "apple", затем "__proto__"
+}
+
+// ваш метод toString в действии
+alert(dictionary); // "apple,__proto__"
+    `
+  },
+  {
+    id: '8',
+    task: `
+// Разница между вызовами
+// важность: 5
+// Давайте создадим новый объект rabbit:
+
+function Rabbit(name) {
+  this.name = name;
+}
+Rabbit.prototype.sayHi = function() {
+  alert(this.name);
+};
+
+let rabbit = new Rabbit("Rabbit");
+// Все эти вызовы делают одно и тоже или нет?
+
+rabbit.sayHi(); 
+Rabbit.prototype.sayHi(); // undefined, тк в prototype нет name
+Object.getPrototypeOf(rabbit).sayHi(); // undefined, тк в prototype нет name
+rabbit.__proto__.sayHi(); // undefined, тк в prototype нет name
+    `
+  }
+]
+export const sixthChapterTasks: TaskType[] = [
+  {
+    id: '1',
+    task: `
+// Перепишите класс
+// важность: 5
+// Класс Clock написан в функциональном стиле. Перепишите его, используя современный синтаксис классов.
+
+// P.S. Часики тикают в консоли. Откройте её, чтобы посмотреть.
+
+class Clock {
+  constructor({ template }) {
+    this.template = template;
+  }
+
+  render() {
+    let date = new Date();
+
+    let hours = date.getHours();
+    if (hours < 10) hours = '0' + hours;
+
+    let mins = date.getMinutes();
+    if (mins < 10) mins = '0' + mins;
+
+    let secs = date.getSeconds();
+    if (secs < 10) secs = '0' + secs;
+
+    let output = this.template.replace('h', hours).replace('m', mins).replace('s', secs);
+
+    console.log(output);
+  }
+
+  stop() {
+    clearInterval(this.timer);
+  }
+
+  start() {
+    this.render();
+    this.timer = setInterval(() => this.render(), 1000);
+  }
+}
+
+
+let clock = new Clock({template: 'h:m:s'});
+clock.start();
+    `
+  },
+  {
+    id: '2',
+    task: `
+// Улучшенные часы
+// важность: 5
+// У нас есть класс Clock. Сейчас он выводит время каждую секунду
+
+class Clock {
+  constructor({ template }) {
+    this.template = template;
+  }
+
+  render() {
+    let date = new Date();
+
+    let hours = date.getHours();
+    if (hours < 10) hours = '0' + hours;
+
+    let mins = date.getMinutes();
+    if (mins < 10) mins = '0' + mins;
+
+    let secs = date.getSeconds();
+    if (secs < 10) secs = '0' + secs;
+
+    let output = this.template.replace('h', hours).replace('m', mins).replace('s', secs);
+
+    console.log(output);
+  }
+
+  stop() {
+    clearInterval(this.timer);
+  }
+
+  start() {
+    this.render();
+    this.timer = setInterval(() => this.render(), 1000);
+  }
+}
+
+
+let clock = new Clock({template: 'h:m:s'});
+clock.start();
+
+// Создайте новый класс ExtendedClock, который будет наследоваться от Clock и добавьте параметр precision – количество миллисекунд между «тиками». Установите значение в 1000 (1 секунда) по умолчанию.
+
+// Сохраните ваш код в файл extended-clock.js
+// Не изменяйте класс clock.js. Расширьте его.
+
+class ExtendedClock extends Clock {
+  constructor(args) {
+    super(args);
+    let { precision = 1000 } = args;
+    this.precision = precision;
+  }
+
+  start() {
+    this.render();
+    this.timer = setInterval(() => this.render(), this.precision);
+  }
+};
+    `
+  },
+  {
+    id: '3',
+    task: `
+// Ошибка создания экземпляра класса
+// важность: 5
+// В коде ниже класс Rabbit наследует Animal.
+
+// К сожалению, объект класса Rabbit не создаётся. Что не так? Исправьте ошибку.
+
+class Animal {
+  constructor(name) {
+    this.name = name;
+  }
+}
+
+class Rabbit extends Animal {
+  constructor(name) {
+    super(name) // передаем свойство в конструктор родителя
+    this.created = Date.now();
+  }
+}
+
+let rabbit = new Rabbit("Белый кролик"); // Error: this is not defined
+alert(rabbit.name);
+    `
+  },
+  {
+    id: '3',
+    task: `
+// Ошибка создания экземпляра класса
+// важность: 5
+// В коде ниже класс Rabbit наследует Animal.
+
+// К сожалению, объект класса Rabbit не создаётся. Что не так? Исправьте ошибку.
+
+class Animal {
+  constructor(name) {
+    this.name = name;
+  }
+}
+
+class Rabbit extends Animal {
+  constructor(name) {
+    super(name) // передаем свойство в конструктор родителя
+    this.created = Date.now();
+  }
+}
+
+let rabbit = new Rabbit("Белый кролик"); // Error: this is not defined
+alert(rabbit.name);
+    `
+  },
+  {
+    id: '4',
+    task: `
+// Класс расширяет объект?
+// важность: 3
+// Как мы уже знаем, все объекты наследуют от Object.prototype и имеют доступ к «общим» методам объекта, например hasOwnProperty.
+
+// Пример:
+
+class Rabbit {
+  constructor(name) {
+    this.name = name;
+  }
+}
+
+let rabbit = new Rabbit("Rab");
+
+// метод hasOwnProperty от Object.prototype
+alert( rabbit.hasOwnProperty('name') ); // true
+// Но что если мы явно напишем "class Rabbit extends Object" – тогда результат будет отличаться от обычного "class Rabbit"?
+
+// В чем разница?
+
+// Ниже пример кода с таким наследованием (почему он не работает? исправьте его):
+
+class Rabbit extends Object {
+  constructor(name) {
+    super() // не было вызова конструктора родителя
+    this.name = name;
+  }
+}
+
+let rabbit = new Rabbit("Кроль");
+
+alert( rabbit.hasOwnProperty('name') ); // Ошибка
+    `
+  },
+  {
+    id: '5',
+    task: `
+// Странный instanceof
+// важность: 5
+// Почему instanceof в примере ниже возвращает true? Мы же видим, что a не создан с помощью B().
+
+function A() {}
+function B() {}
+
+A.prototype = B.prototype = {};
+
+let a = new A();
+
+alert( a instanceof B ); // true тк сравнение идет именно через prototype
+    `
+  }
+]
+export const seventhChapterTasks: TaskType[] = [
+  {
+    id: '1',
+    task: `
+//     Finally или просто код?
+// важность: 5
+// Сравните два фрагмента кода.
+
+// Первый использует finally для выполнения кода после try..catch:
+
+try {
+  начать работу
+  работать
+} catch (e) {
+  обработать ошибку
+} finally {
+  очистить рабочее пространство
+}
+
+// Второй фрагмент просто ставит очистку после try..catch:
+
+try {
+  начать работу
+  работать
+} catch (e) {
+  обработать ошибку
+}
+
+// очистить рабочее пространство
+
+// Лучше первый вариант, тк в случае если ошибка возникнет в catch(), или внутри try будет return,
+// то очистка не произойдет
+ `
+  },
+  {
+    id: '2',
+    task: `
+//     Наследование от SyntaxError
+// важность: 5
+// Создайте класс FormatError, который наследует от встроенного класса SyntaxError.
+
+// Класс должен поддерживать свойства message, name и stack.
+
+// Пример использования:
+
+class FormatError extends SyntaxError {
+
+  constructor(message) {
+    super(message);
+    this.name = "FormatError";
+  }
+}
+
+let err = new FormatError("ошибка форматирования");
+
+console.log( err.message );
+console.log( err.name ); 
+console.log( err.stack ); 
+
+console.log( err instanceof SyntaxError );
+ `
   }
 ]

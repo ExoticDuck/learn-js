@@ -28,9 +28,9 @@
 
 <script setup lang="ts">
 import { computed, defineAsyncComponent, ref, watch } from 'vue'
-// import { VueMonacoEditor } from '@guolao/vue-monaco-editor'
 import * as ts from 'typescript'
 import { useTasksStore } from '@/store/tasks'
+import { stringifyEmptyVars } from '@/utils/utils'
 const VueMonacoEditor = defineAsyncComponent(() => import('@guolao/vue-monaco-editor'))
 const tasks = useTasksStore()
 
@@ -50,7 +50,10 @@ const runCode = () => {
   try {
     const consoleMessages: string[] = []
     const customConsole = {
-      log: (...args: string[]) => consoleMessages.push(args.join(' '))
+      log: (...args: string[]) => {
+        const res = args.map(el => stringifyEmptyVars(el))
+        consoleMessages.push(res.join(' '))
+      }
     }
 
     const jsCode = ts.transpile(code.value)
