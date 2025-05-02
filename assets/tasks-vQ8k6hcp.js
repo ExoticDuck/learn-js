@@ -1,4 +1,4 @@
-import{l as s}from"./index-Cqou-gtg.js";const n=[{id:"1",task:`
+import{l as s}from"./index-DIIYMfC8.js";const n=[{id:"1",task:`
 // *Работа с переменными
 // важность: 2
 // Объявите две переменные: admin и name.
@@ -717,7 +717,7 @@ console.log(a + b);`},{id:"2",task:`function ucFirst(str) {
     let result = str
     .split("")
     .map((key, i) => (i === 0 ? key.toUpperCase() : key))
-    .join(
+    .join('')
     console.log(result);
     return result;
 }
@@ -2101,4 +2101,200 @@ A.prototype = B.prototype = {};
 let a = new A();
 
 alert( a instanceof B ); // true тк сравнение идет именно через prototype
-    `}],d=s("tasks",{state:()=>({tasks:{1:[...n],2:[...o],3:[...l],4:[...i],5:[...u],6:[...c]},taskId:"1",chapterId:"1"}),getters:{getTask:e=>(t,a)=>e.tasks[t].find(r=>r.id===a),getTasksIdsFromChapter:e=>t=>e.tasks[t].map(a=>a.id),getSelectedTaskId:e=>e.taskId,getSelectedChapterId:e=>e.chapterId},actions:{setChapterId(e){this.chapterId=e},setTaskId(e){this.taskId=e}}});export{d as u};
+    `}],m=[{id:"1",task:`
+//     Finally или просто код?
+// важность: 5
+// Сравните два фрагмента кода.
+
+// Первый использует finally для выполнения кода после try..catch:
+
+try {
+  начать работу
+  работать
+} catch (e) {
+  обработать ошибку
+} finally {
+  очистить рабочее пространство
+}
+
+// Второй фрагмент просто ставит очистку после try..catch:
+
+try {
+  начать работу
+  работать
+} catch (e) {
+  обработать ошибку
+}
+
+// очистить рабочее пространство
+
+// Лучше первый вариант, тк в случае если ошибка возникнет в catch(), или внутри try будет return,
+// то очистка не произойдет
+ `},{id:"2",task:`
+//     Наследование от SyntaxError
+// важность: 5
+// Создайте класс FormatError, который наследует от встроенного класса SyntaxError.
+
+// Класс должен поддерживать свойства message, name и stack.
+
+// Пример использования:
+
+class FormatError extends SyntaxError {
+
+  constructor(message) {
+    super(message);
+    this.name = "FormatError";
+  }
+}
+
+let err = new FormatError("ошибка форматирования");
+
+console.log( err.message );
+console.log( err.name ); 
+console.log( err.stack ); 
+
+console.log( err instanceof SyntaxError );
+ `}],d=[{id:"1",task:`
+// Задачи
+// Можно ли "перевыполнить" промис?
+// Что выведет код ниже?
+
+let promise = new Promise(function(resolve, reject) {
+  resolve(1);
+
+  setTimeout(() => resolve(2), 1000);
+});
+
+promise.then(alert); // 1, второй resolve будет проигнорирован
+ `},{id:"2",task:`
+// Задержка на промисах
+// Встроенная функция setTimeout использует колбэк-функции. Создайте альтернативу, использующую промисы.
+
+// Функция delay(ms) должна возвращать промис, который перейдёт в состояние «выполнен» через ms миллисекунд, так чтобы мы могли добавить к нему .then:
+
+function delay(ms) {
+  return new Promise((resolve) => {
+  setTimeout(() => resolve('some value')), ms
+  })
+}
+
+delay(3000).then(() => alert('выполнилось через 3 секунды'));
+ `},{id:"3",task:`
+// Анимация круга с помощью промиса
+// Перепишите функцию showCircle, написанную в задании Анимация круга с помощью колбэка таким образом, чтобы она возвращала промис, вместо того чтобы принимать в аргументы функцию-callback.
+
+// Новое использование:
+
+showCircle(150, 150, 100).then(div => {
+  div.classList.add('message-ball');
+  div.append("Hello, world!");
+});
+ `},{id:"4",task:`
+// Промисы: сравните then и catch
+// Являются ли фрагменты кода ниже эквивалентными? Другими словами, ведут ли они себя одинаково во всех обстоятельствах, для всех переданных им обработчиков?
+
+// promise.then(f1).catch(f2);
+// Против:
+// promise.then(f1, f2);
+
+new Promise((resolve) => {
+  resolve('done')
+})
+.then(
+  (res) => {
+    console.log(res);
+    throw new Error('ошибка внутри f1');
+  },
+  (err) => {
+    console.log('f2 сработал:', err);
+  }
+);
+
+new Promise((resolve, reject) => {
+  throw new Error('Boom!')
+})
+.catch(error => {
+  console.log('Ошибка поймана:')
+  console.log(error)
+})
+ `},{id:"5",task:`
+// Ошибка в setTimeout
+// Что вы думаете? Выполнится ли .catch? Поясните свой ответ.
+
+new Promise(function(resolve, reject) {
+  setTimeout(() => {
+    throw new Error("Whoops!");
+  }, 1000);
+}).catch(alert);
+
+//нет, тк ошибка гененерируется не во время выполнения кода
+ `},{id:"6",task:`
+    Перепишите, используя async/await
+Перепишите один из примеров раздела Цепочка промисов, используя async/await вместо .then/catch:
+
+// function loadJson(url) {
+//   return fetch(url)
+//     .then(response => {
+//       if (response.status == 200) {
+//         return response.json();
+//       } else {
+//         throw new Error(response.status);
+//       }
+//     })
+// }
+
+async function loadJSON(url) {
+  let result = await fetch(url)
+
+  if(result.status === 200) {
+    let jsonResponse = result.json();
+    return jsonResponse;
+  } else {
+    throw new Error(result.status)
+  }
+}
+
+loadJson('no-such-user.json') // (3)
+  .catch(alert); // Error: 404`},{id:"7",task:`
+async function wait() {
+  await new Promise(resolve => setTimeout(resolve, 1000));
+  return 10;
+}
+
+function f() {
+ // ...что здесь написать?
+  // чтобы вызвать wait() и дождаться результата "10" от async–функции
+  // не забывайте, здесь нельзя использовать "await"
+  wait().then(res => {
+    alert(res)
+  })
+}
+f()
+    `}],f=[{id:"1",task:`
+//     next = previous * 16807 % 2147483647
+// Если мы используем 1 как зерно, то значения будут:
+
+// 16807
+// 282475249
+// 1622650073
+// …и так далее…
+// Задачей является создать функцию-генератор pseudoRandom(seed), которая получает seed и создаёт генератор с указанной формулой.
+
+
+function* pseudoRandom(seed) {
+  let result = seed;
+
+  while(true) {
+    result = result * 16807 % 2147483647
+    yield result
+  }
+}
+
+// Пример использования:
+
+let generator = pseudoRandom(1);
+
+alert(generator.next().value); // 16807
+alert(generator.next().value); // 282475249
+alert(generator.next().value); // 162265007
+    `}],h=s("tasks",{state:()=>({tasks:{1:[...n],2:[...o],3:[...l],4:[...i],5:[...u],6:[...c],7:[...m],8:[...d],9:[...f]},taskId:"1",chapterId:"1"}),getters:{getTask:e=>(t,a)=>e.tasks[t].find(r=>r.id===a),getTasksIdsFromChapter:e=>t=>e.tasks[t].map(a=>a.id),getSelectedTaskId:e=>e.taskId,getSelectedChapterId:e=>e.chapterId},actions:{setChapterId(e){this.chapterId=e},setTaskId(e){this.taskId=e}}});export{h as u};
