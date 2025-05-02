@@ -6,10 +6,30 @@
 </template>
 
 <script lang="ts" setup>
-import { defineAsyncComponent } from 'vue'
-
+import Skeleton from '@/components/Skeleton.vue'
+import {
+  AsyncComponentLoader,
+  Component,
+  ComputedOptions,
+  defineAsyncComponent,
+  MethodOptions
+} from 'vue'
 const TasksSelect = defineAsyncComponent(() => import('@/components/TasksSelect.vue'))
-const CodeRunner = defineAsyncComponent(() => import('@/components/CodeRunner.vue'))
+function delayedLoader() {
+  return new Promise<
+    AsyncComponentLoader<Component<any, any, any, ComputedOptions, MethodOptions, {}, any>>
+  >(resolve => {
+    setTimeout(() => {
+      //@ts-ignore
+      resolve(import('@/components/CodeRunner.vue'))
+    }, 500)
+  })
+}
+const CodeRunner = defineAsyncComponent({
+  loader: delayedLoader,
+  loadingComponent: Skeleton,
+  delay: 0
+})
 </script>
 
 <style module>

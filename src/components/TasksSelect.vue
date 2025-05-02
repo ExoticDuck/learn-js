@@ -55,47 +55,46 @@ const updateQueryState = (parameter: string, value: string) => {
 }
 </script>
 
-<style module lang="css">
+<style module lang="scss">
 .select_container {
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 20px;
-}
 
-.select {
-  background-color: inherit;
-  padding: 6px 8px;
-  border-radius: 4px;
-  color: var(--white);
-  /* height: fit-content; */
-  min-width: 250px;
-}
+  .select {
+    background-color: inherit;
+    padding: 6px 8px;
+    border-radius: 4px;
+    color: var(--white);
+    min-width: 250px;
 
-.select::-webkit-scrollbar {
-  width: 4px;
-  height: 14px;
-}
+    &::-webkit-scrollbar {
+      width: 4px;
+      height: 14px;
+    }
 
-.select::-webkit-scrollbar-track {
-  border: rgb(180, 180, 180);
-  background-color: var(--color-background);
-}
+    &::-webkit-scrollbar-track {
+      border: rgb(180, 180, 180);
+      background-color: var(--color-background);
+    }
 
-.select::-webkit-scrollbar-thumb {
-  background-color: var(--color-text);
-  border: 1px solid rgb(193, 193, 193);
-  border-radius: 2px;
-}
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--color-text);
+      border: 1px solid rgb(193, 193, 193);
+      border-radius: 2px;
+    }
 
-.select:focus :focus {
-  outline: 1px solid var(--color-text);
-}
+    &:focus {
+      outline: 1px solid var(--color-text);
+    }
 
-.option {
-  background: var(--color-background);
-  height: 30px;
-  padding: 15px 10px;
-  transition: 0.4s;
+    .option {
+      background: var(--color-background);
+      height: 30px;
+      padding: 20px 10px;
+      transition: 0.4s;
+    }
+  }
 }
 </style>

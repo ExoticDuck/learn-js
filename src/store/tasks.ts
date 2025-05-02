@@ -1,9 +1,12 @@
 import { defineStore } from 'pinia'
 import {
+  eightChapterTasks,
   fifthChapterTasks,
   firstChapterTasks,
   fourthChapterTasks,
+  nineChapterTasks,
   secondChapterTasks,
+  seventhChapterTasks,
   sixthChapterTasks,
   TaskType,
   thirdChapterTasks
@@ -26,7 +29,10 @@ export const useTasksStore = defineStore('tasks', {
         3: [...thirdChapterTasks],
         4: [...fourthChapterTasks],
         5: [...fifthChapterTasks],
-        6: [...sixthChapterTasks]
+        6: [...sixthChapterTasks],
+        7: [...seventhChapterTasks],
+        8: [...eightChapterTasks],
+        9: [...nineChapterTasks]
       },
       taskId: '1',
       chapterId: '1'
