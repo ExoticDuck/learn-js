@@ -1,4 +1,4 @@
-import{l as s}from"./index-DIIYMfC8.js";const n=[{id:"1",task:`
+import{m as s}from"./index-IyPyoviN.js";const n=[{id:"1",task:`
 // *Работа с переменными
 // важность: 2
 // Объявите две переменные: admin и name.
@@ -2270,7 +2270,7 @@ function f() {
   })
 }
 f()
-    `}],f=[{id:"1",task:`
+    `}],p=[{id:"1",task:`
 //     next = previous * 16807 % 2147483647
 // Если мы используем 1 как зерно, то значения будут:
 
@@ -2297,4 +2297,141 @@ let generator = pseudoRandom(1);
 alert(generator.next().value); // 16807
 alert(generator.next().value); // 282475249
 alert(generator.next().value); // 162265007
-    `}],h=s("tasks",{state:()=>({tasks:{1:[...n],2:[...o],3:[...l],4:[...i],5:[...u],6:[...c],7:[...m],8:[...d],9:[...f]},taskId:"1",chapterId:"1"}),getters:{getTask:e=>(t,a)=>e.tasks[t].find(r=>r.id===a),getTasksIdsFromChapter:e=>t=>e.tasks[t].map(a=>a.id),getSelectedTaskId:e=>e.taskId,getSelectedChapterId:e=>e.chapterId},actions:{setChapterId(e){this.chapterId=e},setTaskId(e){this.taskId=e}}});export{h as u};
+    `}],f=[{id:"1",task:`
+// Ошибка при чтении несуществующего свойства
+// Обычно при чтении несуществующего свойства из объекта возвращается undefined.
+
+// Создайте прокси, который генерирует ошибку при попытке прочитать несуществующее свойство.
+
+// Это может помочь обнаружить программные ошибки пораньше.
+
+// Напишите функцию wrap(target), которая берёт объект target и возвращает прокси, добавляющий в него этот аспект функциональности.
+
+// Вот как это должно работать:
+
+let user = {
+  name: "John"
+};
+
+function wrap(target) {
+  return new Proxy(target, {
+    get(target, prop, reciever) {
+      if (target[prop]) {
+          return target[prop]
+      } else {
+        throw new Error('No such property in target')
+      }
+    }
+  });
+}
+
+user = wrap(user);
+
+alert(user.name); // John
+alert(user.age); // Ошибка: такого свойства не существует
+    `},{id:"2",task:`
+// Получение элемента массива с отрицательной позиции
+// В некоторых языках программирования возможно получать элементы массива, используя отрицательные индексы, отсчитываемые с конца.
+
+// Вот так:
+
+// let array = [1, 2, 3];
+
+// array[-1]; // 3, последний элемент
+// array[-2]; // 2, предпоследний элемент
+// array[-3]; // 1, за два элемента до последнего
+// Другими словами, array[-N] – это то же, что и array[array.length - N].
+
+// Создайте прокси, который реализовывал бы такое поведение.
+
+// Вот как это должно работать:
+
+let array = [1, 2, 3];
+
+array = new Proxy(array, {
+  get(array, index, reciever) {
+      if (Number(index) >= 0) {
+          return array[index]
+      } else {
+        const targetIndex = array.length + Number(index);
+        return array[targetIndex]
+      }
+    }
+});
+alert( array[-1] ); // 3
+alert( array[-2] ); // 2
+
+// вся остальная функциональность массивов должна остаться без изменений`},{id:"3",task:`
+// Observable
+// Создайте функцию makeObservable(target), которая делает объект «наблюдаемым», возвращая прокси.
+
+// Вот как это должно работать:
+
+function makeObservable(target) {
+  target['handlers'] = [];
+
+  target.observe = function (handler) {
+    target['handlers'].push(handler)
+  }
+
+  return new Proxy(target, {
+    set(target, prop, value, reciever) {
+      let isSuccess = Reflect.set(target, prop, value, reciever)
+      if (isSuccess) {
+        target['handlers'].forEach(handler => handler(prop, value))
+      }
+      return isSuccess
+    }
+  });
+}
+
+
+let user = {};
+user = makeObservable(user);
+
+user.observe((key, value) => {
+  alert(SET {key}={value}); //$
+});
+
+user.name = "John"; // выводит: SET name=John
+// Другими словами, возвращаемый makeObservable объект аналогичен исходному, но также имеет метод observe(handler), который позволяет запускать handler при любом изменении свойств.
+
+// При изменении любого свойства вызывается handler(key, value) с именем и значением свойства.
+    `},{id:"4",task:`
+// Eval-калькулятор
+// важность: 4
+// Создайте калькулятор, который запрашивает ввод какого-нибудь арифметического выражения и возвращает результат его вычисления.
+
+// В этой задаче нет необходимости проверять полученное выражение на корректность, просто вычислить и вернуть результат.
+
+function Calculate() {
+  let task = prompt('Введите ваше выражение');
+  while (task) {
+    alert(eval(task))
+    task = prompt('Введите ваше выражение')
+  }
+}  
+
+Calculate()
+    `},{id:"5",task:`
+//     Проверка синтаксиса
+// важность: 2
+// Каким будет результат выполнения этого кода?
+
+let user = {
+  name: "John",
+  go: function() { alert(this.name) }
+}; //не хватает ";", код воспринимается как вызов {}()
+
+(user.go)()`},{id:"6",task:`
+    // Отсортируйте массив с буквой ё
+    // важность: 5
+    // Используя Intl.Collator, отсортируйте массив:
+
+    let animals = ["тигр", "ёж", "енот", "ехидна", "АИСТ", "ЯК"];
+
+    // ... ваш код ...
+    let collator = new Intl.Collator();
+    animals.sort((a, b) => collator.compare(a, b))
+    alert( animals ); // АИСТ,ёж,енот,ехидна,тигр,ЯК
+    `}],g=s("tasks",{state:()=>({tasks:{1:[...n],2:[...o],3:[...l],4:[...i],5:[...u],6:[...c],7:[...m],8:[...d],9:[...p],10:[...f]},taskId:"1",chapterId:"1"}),getters:{getTask:e=>(t,r)=>e.tasks[t].find(a=>a.id===r),getTasksIdsFromChapter:e=>t=>e.tasks[t].map(r=>r.id),getSelectedTaskId:e=>e.taskId,getSelectedChapterId:e=>e.chapterId},actions:{setChapterId(e){this.chapterId=e},setTaskId(e){this.taskId=e}}});export{g as u};
