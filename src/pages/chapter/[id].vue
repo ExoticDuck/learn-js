@@ -16,17 +16,17 @@ import {
 } from 'vue'
 const TasksSelect = defineAsyncComponent(() => import('@/components/TasksSelect.vue'))
 function delayedLoader() {
-  return new Promise<
-    AsyncComponentLoader<Component<any, any, any, ComputedOptions, MethodOptions, {}, any>>
-  >(resolve => {
+  return new Promise(resolve => {
     setTimeout(() => {
-      //@ts-ignore
       resolve(import('@/components/CodeRunner.vue'))
     }, 500)
   })
 }
 const CodeRunner = defineAsyncComponent({
-  loader: delayedLoader,
+  loader: delayedLoader as AsyncComponentLoader<
+    // eslint-disable-next-line @typescript-eslint/no-empty-object-type
+    Component<any, any, any, ComputedOptions, MethodOptions, {}, any>
+  >,
   loadingComponent: Skeleton,
   delay: 0
 })
