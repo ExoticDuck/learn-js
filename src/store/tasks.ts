@@ -9,6 +9,7 @@ import {
   seventhChapterTasks,
   sixthChapterTasks,
   TaskType,
+  tenChapterTasks,
   thirdChapterTasks
 } from './defaultTasks'
 
@@ -32,7 +33,8 @@ export const useTasksStore = defineStore('tasks', {
         6: [...sixthChapterTasks],
         7: [...seventhChapterTasks],
         8: [...eightChapterTasks],
-        9: [...nineChapterTasks]
+        9: [...nineChapterTasks],
+        10: [...tenChapterTasks]
       },
       taskId: '1',
       chapterId: '1'

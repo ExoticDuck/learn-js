@@ -12,6 +12,7 @@
         <RouterLink to="/chapter/7">Chapter 7</RouterLink>
         <RouterLink to="/chapter/8">Chapter 8</RouterLink>
         <RouterLink to="/chapter/9">Chapter 9</RouterLink>
+        <RouterLink to="/chapter/10">Chapter 10</RouterLink>
       </nav>
     </div>
   </header>

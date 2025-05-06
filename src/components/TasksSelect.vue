@@ -19,7 +19,7 @@
 
 <script setup lang="ts">
 import { useTasksStore } from '@/store/tasks'
-import { computed } from 'vue'
+import { computed, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
 const tasks = useTasksStore()
@@ -27,6 +27,7 @@ const route = useRoute()
 const { currentRoute, replace } = useRouter()
 
 type ParamsType = { id: number }
+type QueryType = { task: string }
 const chapterId = computed(() => {
   const { id } = route.params as ParamsType
   tasks.setChapterId(id.toString())
@@ -37,7 +38,8 @@ const tasksIds = computed(() => tasks.getTasksIdsFromChapter(chapterId.value))
 
 const selectedTaskId = computed({
   get() {
-    return String(route.query.task ?? 1)
+    const { task } = route.query as QueryType
+    return String(tasks.taskId ?? task)
   },
   set(newValue: string) {
     updateQueryState('task', newValue)
@@ -53,6 +55,11 @@ const updateQueryState = (parameter: string, value: string) => {
     }
   })
 }
+
+onMounted(() => {
+  const { task } = route.query as QueryType
+  selectedTaskId.value = task
+})
 </script>
 
 <style module lang="scss">
